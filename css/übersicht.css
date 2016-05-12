@@ -1,0 +1,21 @@
+/*
+*/
+/* 
+    Created on : 11.05.2016, 20:06:50
+    Author     : Marco Ammon <ammon.marco@t-online.de>
+*/
+.übersicht-box {
+  background-color: #66502d;
+  margin: 10px;
+  color: #c3c349;
+  font-size: 18pt;
+  text-align: center;
+}
+.übersicht-box-float {
+  color: #c3c349;
+  background-color: #66502d;
+  margin: 10px;
+  margin-top: 20px;
+  float: right;
+}
+/*# sourceMappingURL=übersicht.css.map */

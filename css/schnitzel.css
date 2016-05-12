@@ -1,0 +1,118 @@
+/*
+*/
+/* 
+    Created on : 11.05.2016, 14:00:34
+    Author     : Marco Ammon <ammon.marco@t-online.de>
+*/
+#banner {
+  height: 128px;
+  width: 100%;
+  padding-left: 31px;
+  background-color: #c3c349;
+}
+#logo {
+  height: 128px;
+  width: 128px;
+  background-color: #66502d;
+  float: left;
+}
+.banner-container {
+  height: 128px;
+  text-align: center;
+  overflow: hidden;
+  background-color: #c3c349;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner-title {
+  font-size: 55pt;
+  color: #66502d;
+  font-family: "Kaushan Script";
+}
+.navbar-title,
+.navbar-title-short {
+  font-family: "Kaushan Script";
+  font-size: 17pt;
+}
+.navbar-nav > li > a > i {
+  line-height: 20px;
+}
+#navbar-logo {
+  float: left;
+  margin-right: 8px;
+  height: 46px;
+  width: 46px;
+  margin-top: -13px;
+}
+.navbar-title {
+  text-overflow: ellipsis;
+}
+#footer {
+  color: #c3c349;
+  background-color: #4f3e23;
+  margin-top: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .footer-text {
+    text-align: center;
+  }
+}
+.footer-text > a {
+  color: #c3c349;
+}
+.footer-text > a:hover {
+  color: #d1d1aa;
+}
+.footer-text > a:visited {
+  color: #a6a63e;
+}
+@media (min-width: 992px) and (max-width: 1048px) {
+  .social-text {
+    display: none;
+  }
+}
+.navbar-title-short {
+  display: none;
+}
+@media (max-width: 363px) {
+  .navbar-title-short {
+    display: block !important;
+  }
+  .navbar-title {
+    display: none !important;
+  }
+}
+@media (max-width: 418px) {
+  #navbar-logo {
+    display: none !important;
+  }
+}
+.panel-body {
+  color: #4f3e23;
+  background-color: #c3c349;
+}
+.panel-title,
+.panel-heading,
+.panel-footer {
+  color: #c3c349 !important;
+  background-color: #4f3e23 !important;
+  border-color: #4f3e23 !important;
+}
+.panel-footer > a {
+  color: #c3c349 !important;
+}
+.panel-footer > a:hover {
+  color: #d1d1aa !important;
+}
+/*img {    
+    -webkit-animation:spin 10s linear infinite;
+    -moz-animation:spin 10s linear infinite;
+    animation:spin 10s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }*/
+/*# sourceMappingURL=schnitzel.css.map */

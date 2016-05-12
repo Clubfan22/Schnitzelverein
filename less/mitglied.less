@@ -1,0 +1,45 @@
+/*
+*/
+/* 
+    Created on : 11.05.2016, 21:21:43
+    Author     : Marco Ammon <ammon.marco@t-online.de>
+*/
+@import "bootstrap/less/variables.less";
+
+.jumbotron {
+	color: @navbar-default-link-active-bg;
+	background-color: @navbar-default-link-color;
+}
+.jumbotron > h1 {
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+#beitritt {
+	column-count: 1;
+	-moz-column-count: 1;
+	-webkit-column-count: 1;
+    column-gap: 30px;
+	-moz-column-gap: 30px;
+	-webkit-column-gap: 30px;
+	text-align: justify;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+@media (min-width: 768px) and (max-width: 921px){
+	#beitritt {
+		column-count: 2 !important;
+		-moz-column-count: 2 !important;
+		-webkit-column-count: 2 !important;
+	}
+}
+@media (min-width: 922px){
+	#beitritt {
+		column-count: 3 !important;
+		-moz-column-count: 3 !important;
+		-webkit-column-count: 3 !important;
+	}
+}

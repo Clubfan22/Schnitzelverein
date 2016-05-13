@@ -30,6 +30,16 @@
   color: #66502d;
   font-family: "Kaushan Script";
 }
+h1,
+h2 {
+  font-family: "Kaushan Script";
+}
+h1 {
+  font-size: 36pt;
+}
+h2 {
+  font-size: 30pt;
+}
 .navbar-title,
 .navbar-title-short {
   font-family: "Kaushan Script";
@@ -89,6 +99,9 @@
   #navbar-logo {
     display: none !important;
   }
+}
+#main-content {
+  color: #4f3e23;
 }
 .panel-body {
   color: #4f3e23;

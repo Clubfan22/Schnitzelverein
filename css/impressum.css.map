@@ -1,1 +1,1 @@
-{"version":3,"sources":["../less/impressum.less"],"names":[],"mappings":";;;;;;AAQA;EACC,cAAA;;AAED;EACC,oBAAA;;AAED;EACC,gBAAA;EACA,oBAAA;;AAED;EACC,kBAAA;;AAED;EACC,mBAAA;;AAED;EACC,eAAA","file":"impressum.css"}
+{"version":3,"sources":["../less/impressum.less"],"names":[],"mappings":";;;;;;AAQA;EACC,oBAAA;;AAED;EACC,gBAAA;EACA,oBAAA;;AAED;EACC,kBAAA;;AAED;EACC,mBAAA;EACA,iBAAA;EACA,kBAAA;EACG,qBAAA;EACA,aAAA;;AAEJ,aAAc;EACb,aAAa,gBAAb;EACA,eAAA;;AAED;EACC,eAAA","file":"impressum.css"}

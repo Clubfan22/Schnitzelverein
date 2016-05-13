@@ -18,4 +18,14 @@
   margin-top: 20px;
   float: right;
 }
+@media (max-width: 991px) {
+  #main-heading {
+    margin-top: 0px;
+  }
+}
+@media (max-width: 1199px) {
+  .übersicht-box-float {
+    margin-top: 0px !important;
+  }
+}
 /*# sourceMappingURL=übersicht.css.map */

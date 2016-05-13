@@ -28,6 +28,9 @@ h1,
 h3 {
   margin-top: 0px;
 }
+h1 {
+  padding-bottom: 5px;
+}
 .termin-heading > h4 {
   margin-bottom: 5px;
 }

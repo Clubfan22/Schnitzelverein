@@ -13,7 +13,7 @@ if (isset($_GET["page"])) {
 	$page = strtolower($_GET["page"]);
 	if (!in_array_2d($page, $pages, "page")) {
 		$page = "übersicht";
-	} 
+	}
 } else {
 	$page = "übersicht";
 }
@@ -48,77 +48,78 @@ $title = get_title_from_page($page, $pages);
 		<script src="bootstrap/dist/js/button.js"></script>
 		<!--<script src="bootstrap/dist/js/collapse.js"></script>
 		<script src="bootstrap/dist/js/dropdown.js"></script> -->
-
-		<div class="visible-lg" id="banner">
-			<div id="logo">
-				<img src="resources/logo.png" alt="Logo" height="128" width="128">
-			</div>		
-			<div class="banner-container">
-				<span class="banner-title">1. Deutscher Schnitzelverein e.V.</span>
-			</div>
-		</div>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header hidden-lg">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Navigation wechseln</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.php"><img class="hidden-lg" id="navbar-logo" src="resources/logo.png" alt="Logo">
-						<span class="navbar-title">1. Deutscher Schnitzelverein e.V.</span>
-						<span class="navbar-title-short">Schnitzelverein e.V.</span>
-					</a>					
+		<div id="wrap">
+			<div class="visible-lg" id="banner">
+				<div id="logo">
+					<img src="resources/logo.png" alt="Logo" height="128" width="128">
+				</div>		
+				<div class="banner-container">
+					<span class="banner-title">1. Deutscher Schnitzelverein e.V.</span>
 				</div>
-				<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<?php foreach ($navigation as $element) { ?>
-							<li <?php
-							echo "class=\"";
-							if ($element[page] == $page) {
-								echo "active ";
-							};
-							if (isset($element[visibility])) {
-								echo "visible-" . $element[visibility];
-							};
-							echo "\"";
-							?>>
-								<a href="<?php echo "index.php?page=" . $element[page]; ?>"> <?php
-									if (isset($element[icon])) {
-										echo "<i class=\"fa fa-" . $element[icon] . " visible-sm\" aria-hidden=\"true\"></i>";
-									};
-									echo "<span";
-									if (isset($element[icon])) {
-										echo " class=\"hidden-sm\"";
-									} echo ">" . $element[title] . "</span>";
-									if ($element[page] == $page) {
-										echo "<span class=\"sr-only\">(current)</span>";
-									};
-									?></a>
+			</div>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header hidden-lg">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Navigation wechseln</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.php"><img class="hidden-lg" id="navbar-logo" src="resources/logo.png" alt="Logo">
+							<span class="navbar-title">1. Deutscher Schnitzelverein e.V.</span>
+							<span class="navbar-title-short">Schnitzelverein e.V.</span>
+						</a>					
+					</div>
+					<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<?php foreach ($navigation as $element) { ?>
+								<li <?php
+								echo "class=\"";
+								if ($element[page] == $page) {
+									echo "active ";
+								};
+								if (isset($element[visibility])) {
+									echo "visible-" . $element[visibility];
+								};
+								echo "\"";
+								?>>
+									<a href="<?php echo "index.php?page=" . $element[page]; ?>"> <?php
+										if (isset($element[icon])) {
+											echo "<i class=\"fa fa-" . $element[icon] . " visible-sm\" aria-hidden=\"true\"></i>";
+										};
+										echo "<span";
+										if (isset($element[icon])) {
+											echo " class=\"hidden-sm\"";
+										} echo ">" . $element[title] . "</span>";
+										if ($element[page] == $page) {
+											echo "<span class=\"sr-only\">(current)</span>";
+										};
+										?></a>
+								</li>
+							<?php }; ?>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="nav-divider"></li>
+							<li>
+								<a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i><span class="hidden-sm social-text"> Facebook</span></a>
 							</li>
-<?php }; ?>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="nav-divider"></li>
-						<li>
-							<a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i><span class="hidden-sm social-text"> Facebook</span></a>
-						</li>
-						<li>
-							<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i><span class="hidden-sm social-text"> Instagram</span></a>
-						</li>
-						<li>
-							<a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i><span class="hidden-sm social-text"> Twitter</span></a>
-						</li>
-					</ul>
-				</div>
+							<li>
+								<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i><span class="hidden-sm social-text"> Instagram</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i><span class="hidden-sm social-text"> Twitter</span></a>
+							</li>
+						</ul>
+					</div>
 
-			</div>
-		</nav>
-<?php
+				</div>
+			</nav>
+			<?php
 //Einbinden der eigentlich Content-Pages
-include ('content/' . $page . '.html');
-?>
+			include ('content/' . $page . '.html');
+			?>
+		</div>
 		<div id="footer">
 			<div class="container-fluid">
 				<div class="row">

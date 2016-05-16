@@ -83,6 +83,17 @@ body {
     padding-bottom: 10px;
   }
 }
+@media (max-width: 1199px) {
+  .navbar-default {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+  #main-content {
+    padding-top: 60px;
+  }
+}
 #footer {
   color: #c3c349;
   background-color: #4f3e23;

@@ -7,7 +7,7 @@
 #banner {
   height: 128px;
   width: 100%;
-  padding-left: 31px;
+  padding-left: 30px;
   background-color: #c3c349;
 }
 #logo {
@@ -40,6 +40,9 @@ h1 {
 }
 h2 {
   font-size: 30pt;
+}
+.navbar-default {
+  border-top: none !important;
 }
 .navbar-title,
 .navbar-title-short {

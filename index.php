@@ -51,7 +51,9 @@ $title = get_title_from_page($page, $pages);
 		<div id="wrap">
 			<div class="visible-lg" id="banner">
 				<div id="logo">
-					<img src="resources/logo.png" alt="Logo" height="128" width="128">
+					<a href="index.php">
+						<img src="resources/logo.png" alt="Logo" height="128" width="128">
+					</a>
 				</div>		
 				<div class="banner-container">
 					<span class="banner-title">1. Deutscher Schnitzelverein e.V.</span>

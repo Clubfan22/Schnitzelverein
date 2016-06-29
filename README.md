@@ -4,21 +4,21 @@ Dies ist der Quellcode der Webseite des 1. Deutschen Schnitzelvereins e.V.
 
 Aufbau
 ============
-*index.php : Grundseite
+* index.php : Grundseite
 
-*bootstrap/ : Angepasstes Bootstrap
+* bootstrap/ : Angepasstes Bootstrap
 
-*content/ : Inhaltsseiten
+* content/ : Inhaltsseiten
 
-*css/ : CSS-Dateien (aus less kompiliert)
+* css/ : CSS-Dateien (aus less kompiliert)
 
-*documents/ : Vereinsdokumente, etwa Formulare
+* documents/ : Vereinsdokumente, etwa Formulare
 
-*less/ : Less-Dateien, eine pro Seite aus content/
+* less/ : Less-Dateien, eine pro Seite aus content/
 
-*less/schnitzel.less : wird für alle Seiten verwendet, etwa Banner, Navbar, Panels, ...
+* less/schnitzel.less : wird für alle Seiten verwendet, etwa Banner, Navbar, Panels, ...
 
-*resources/ : Ressourcen, etwa Bilder und Logo
+* resources/ : Ressourcen, etwa Bilder und Logo
 
 Verwendete Frameworks
 ============

@@ -154,5 +154,5 @@ function get_title_from_page($page, $haystack) {
 			return $item["title"];
 		}
 	}
-	return "Error! Title not found!";
+	return false;
 }

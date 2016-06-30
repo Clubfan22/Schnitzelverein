@@ -29,6 +29,7 @@ $title = get_title_from_page($page, $pages);
 		<!-- Bootstrap -->
 		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="icomoon/style.css" rel="stylesheet">
 		<link href="css/schnitzel.css" rel="stylesheet">
 
 		<link rel="icon" href="resources/logo.png">
@@ -107,7 +108,7 @@ $title = get_title_from_page($page, $pages);
 								<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span class="hidden-sm social-text"> Facebook</span></a>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i><span class="hidden-sm social-text"> Instagram</span></a>
+								<a href="#"><i class="icon-instagram-square-simple" aria-hidden="true"></i><span class="hidden-sm social-text"> Instagram</span></a>
 							</li>
 							<li>
 								<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span class="hidden-sm social-text"> Twitter</span></a>

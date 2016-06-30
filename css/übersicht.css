@@ -18,6 +18,20 @@
   margin-top: 20px;
   float: right;
 }
+#main-content > div > p > a {
+  color: #c3c349;
+}
+#main-content > div > p > a:visited {
+  color: #a6a63e;
+}
+#main-content > div > p > a:hover {
+  color: #66502d;
+}
+@media (min-width: 992px) {
+  #main-content > div > p {
+    font-size: 15pt;
+  }
+}
 @media (max-width: 991px) {
   #main-heading {
     margin-top: 0px;

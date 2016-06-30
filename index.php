@@ -1,7 +1,7 @@
 <?php
 $navigation = [
 	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg"],
-	["page" => "geschichte", "title" => "Geschichte", "icon" => "file-text-o"],
+	//["page" => "geschichte", "title" => "Geschichte", "icon" => "file-text-o"],
 	["page" => "termine", "title" => "Termine", "icon" => "calendar"],
 	["page" => "mitglied", "title" => "Mitglied werden!"]
 ];
@@ -104,13 +104,13 @@ $title = get_title_from_page($page, $pages);
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-divider"></li>
 							<li>
-								<a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i><span class="hidden-sm social-text"> Facebook</span></a>
+								<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span class="hidden-sm social-text"> Facebook</span></a>
 							</li>
 							<li>
 								<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i><span class="hidden-sm social-text"> Instagram</span></a>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i><span class="hidden-sm social-text"> Twitter</span></a>
+								<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span class="hidden-sm social-text"> Twitter</span></a>
 							</li>
 						</ul>
 					</div>

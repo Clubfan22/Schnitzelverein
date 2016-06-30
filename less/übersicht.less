@@ -21,6 +21,20 @@
 	margin-top: 20px;
 	float:right;
 }
+#main-content > div > p > a {
+	color: @navbar-default-color;	
+}
+#main-content > div > p > a:visited {
+	color: @navbar-default-link-active-color;
+}
+#main-content > div > p > a:hover {
+	color: @navbar-default-bg;
+}
+@media (min-width: @screen-md-min){
+	#main-content > div > p {
+		font-size: 15pt;
+	}
+}
 @media (max-width:991px){
 	#main-heading {
 		margin-top: 0px;

@@ -16,7 +16,7 @@ Aufbau
 
 * less/ : Less-Dateien, eine pro Seite aus content/
 
-** less/schnitzel.less : wird für alle Seiten verwendet, etwa Banner, Navbar, Panels, ...
+  * less/schnitzel.less : wird für alle Seiten verwendet, etwa Banner, Navbar, Panels, ...
 
 * resources/ : Ressourcen, etwa Bilder und Logo
 

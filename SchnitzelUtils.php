@@ -11,7 +11,9 @@
 class SchnitzelUtils {
 
 	static function hashPassword($password, $salt) {
+		//TODO: Richtige Funktion schreiben
 		$saltedPassword = $password . $salt;
+		return $saltedPassword;
 	}
 
 	function crypto_rand_secure($min, $max) {
@@ -37,7 +39,7 @@ class SchnitzelUtils {
 		$max = strlen($codeAlphabet); // edited
 
 		for ($i = 0; $i < $length; $i++) {
-			$token .= $codeAlphabet[crypto_rand_secure(0, $max)];
+			$token .= $codeAlphabet[self::crypto_rand_secure(0, $max)];
 		}
 
 		return $token;
@@ -47,7 +49,11 @@ class SchnitzelUtils {
 		$db = new SchnitzelDB();
 		$db->connect();
 		$session = $db->selectSessionByToken($token);
-		return (microtime() < $session['end_date']);
+		echo time()."/n";
+		echo $session['end_date'];
+		$expiration = new DateTime($session['end_date']);
+		//echo $expiration->format("U");
+		return (time() < $expiration->format("U"));
 	}
 
 }

@@ -13,7 +13,7 @@ class SchnitzelDB {
 	
 	function connect(){
 		include 'Settings.php';
-		$mysqli = new mysqli("localhost", $user, $password, $database);
+		$mysqli = new mysqli("localhost", $dbUser, $dbPassword, $dbName);
 		$mysqli->set_charset('utf8');
 		if ($mysqli->connect_errno){
 			echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -97,11 +97,11 @@ class SchnitzelDB {
 	}
 	function createSession(array $session){
 		$mysqli = $this->mysqli;
-		if (!($stmt = $mysqli->prepare("INSERT INTO sessions(token, end_date, user_id) VALUES (?, ?, ?)"))){
+		if (!($stmt = $mysqli->prepare("INSERT INTO sessions(token, end_date, user_id) VALUES (?, FROM_UNIXTIME(?), ?)"))){
 			echo "Prepare failed: (".$mysqli->errno.") ". $mysqli->error;
 			return false;
 		}
-		if (!$stmt->bind_param("iis",  $session['token'], $session['end_date'], $session['user_id'])){
+		if (!$stmt->bind_param("sss",  $session['token'], $session['end_date'], $session['user_id'])){
 			echo "Binding parameters failed: (".$stmt->errno.") ".$stmt->error;
 			return false;
 		}
@@ -142,7 +142,7 @@ class SchnitzelDB {
 	}	
 	function selectSessionByToken($token){
 		$mysqli = $this->mysqli;
-		if (!($stmt = $mysqli->prepare("SELECT FROM sessions WHERE token=?"))){
+		if (!($stmt = $mysqli->prepare("SELECT * FROM sessions WHERE token = ?"))){
 			echo "Prepare failed: (".$mysqli->errno.") ". $mysqli->error;
 			return false;
 		}
@@ -164,7 +164,7 @@ class SchnitzelDB {
 			echo "Prepare failed: (".$mysqli->errno.") ". $mysqli->error;
 			return false;
 		}
-		if (!$stmt->bind_param("issss", $event['date'], $event['location'], $event['street'], $event['city'], $event['text'])){
+		if (!$stmt->bind_param("sssss", $event['date'], $event['location'], $event['street'], $event['city'], $event['text'])){
 			echo "Binding parameters failed: (".$stmt->errno.") ".$stmt->error;
 			return false;
 		}
@@ -174,12 +174,43 @@ class SchnitzelDB {
 		}
 		return $mysqli->insert_id;
 	}
+	function updateEvent(array $event){
+		$mysqli = $this->mysqli;
+		if (!($stmt = $mysqli->prepare("UPDATE events SET event_date = ?, location = ?, street = ?, city = ?, text = ? WHERE id=?"))){
+			echo "Prepare failed: (".$mysqli->errno.") ". $mysqli->error;
+			return false;
+		}
+		if (!$stmt->bind_param("issssi", $event['event_date'], $event['location'], $event['street'], $event['city'], $event['text'], $event['id'])){
+			echo "Binding parameters failed: (".$stmt->errno.") ".$stmt->error;
+			return false;
+		}
+		if (!$stmt->execute()){
+			echo "Execute failed: (".$stmt->errno.") ".$stmt->error;
+			return false;
+		}
+	}
+	function deleteEvent($id){
+		$mysqli = $this->mysqli;
+		if (!($stmt = $mysqli->prepare("DELETE FROM events WHERE id=?"))){
+			echo "Prepare failed: (".$mysqli->errno.") ". $mysqli->error;
+			return false;
+		}
+		if (!$stmt->bind_param("i", $id)){
+			echo "Binding parameters failed: (".$stmt->errno.") ".$stmt->error;
+			return false;
+		}
+		if (!$stmt->execute()){
+			echo "Execute failed: (".$stmt->errno.") ".$stmt->error;
+			return false;
+		}
+		return true;
+	}
 	function listEventsByTime($order = 'DESC', $limit = 0){
 		if (!($order=='DESC'||$order=='ASC')){
 			return false;
 		}
 		$mysqli = $this->mysqli;
-		$sql = "SELECT FROM events ORDER BY event_date ".$order;
+		$sql = "SELECT * FROM events ORDER BY event_date ".$order;
 		if (is_numeric($order)){
 			if ($order > 0){
 				$sql .= " LIMIT ".$limit;
@@ -194,8 +225,7 @@ class SchnitzelDB {
 			return false;
 		}
 		$res = $stmt->get_result();
-		$events = $res->fetch_all(MYSQLI_ASSOC);
-		return $events;
+		return $res->fetch_all(MYSQLI_ASSOC);
 	}
 	
 }

@@ -10,10 +10,8 @@
  */
 class SchnitzelUtils {
 
-	static function hashPassword($password, $salt) {
-		//TODO: Richtige Funktion schreiben
-		$saltedPassword = $password . $salt;
-		return $saltedPassword;
+	static function hashPassword($password, $salt) {		
+		return hash_pbkdf2("sha256", $password, $salt,256000,255);
 	}
 
 	function crypto_rand_secure($min, $max) {
@@ -48,12 +46,21 @@ class SchnitzelUtils {
 	static function isLoggedIn($token) {
 		$db = new SchnitzelDB();
 		$db->connect();
-		$session = $db->selectSessionByToken($token);
-		echo time()."/n";
-		echo $session['end_date'];
+		$session = $db->selectSessionByToken($token);		
 		$expiration = new DateTime($session['end_date']);
 		//echo $expiration->format("U");
 		return (time() < $expiration->format("U"));
+	}
+	
+	static function keepSessionAlive($token){
+		include 'Settings.php';
+		$db = new SchnitzelDB();
+		$db->connect();
+		$session['token'] = $token;
+		$endDate = time() + $sessionDuration * 60;
+		$session['end_date'] = $endDate;
+		$db->updateSession($session);
+		setcookie("token", $token, $endDate);
 	}
 
 }

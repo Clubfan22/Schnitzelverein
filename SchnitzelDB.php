@@ -253,6 +253,7 @@ class SchnitzelDB {
 			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 			return false;
 		}
+		return $event["id"];
 	}
 
 	function deleteEvent($id) {

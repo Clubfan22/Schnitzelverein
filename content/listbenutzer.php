@@ -1,7 +1,7 @@
 <link href="css/listbenutzer.css" rel="stylesheet">
 <?php
 global $isLoggedIn;
-if (!isLoggedIn) {
+if (!$isLoggedIn) {
 	die();
 }
 if (isset($_POST["create"])) {

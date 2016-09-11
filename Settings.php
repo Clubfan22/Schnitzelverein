@@ -3,6 +3,6 @@
 	$dbUser="";
 	$dbPassword="";
 	$sessionDuration=15;
-	$installer=true;
+	$enableAPI = false;
 ?>
 

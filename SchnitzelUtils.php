@@ -52,15 +52,20 @@ class SchnitzelUtils {
 		return (time() < $expiration->format("U"));
 	}
 	
-	static function keepSessionAlive($token){
+	static function keepSessionAlive($token, $stay = 0){
 		include 'Settings.php';
 		$db = new SchnitzelDB();
 		$db->connect();
 		$session['token'] = $token;
-		$endDate = time() + $sessionDuration * 60;
+		if ($stay == 1){
+			$endDate = time() + 365 * 24 * 60 * 60;
+		} else {
+			$endDate = time() + $sessionDuration * 60;
+		}
 		$session['end_date'] = $endDate;
-		$db->updateSession($session);
+		$db->updateSession($session);		
 		setcookie("token", $token, $endDate);
+		setcookie("stay", $stay, $endDate);
 	}
 
 }

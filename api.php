@@ -2,7 +2,10 @@
 
 include 'SchnitzelDB.php';
 include 'SchnitzelUtils.php';
-
+include 'Settings.php';
+if (!$enableAPI){
+	die();
+}
 $action = strtolower(filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING));
 if ($action == 'login') {
 	$username = filter_input(INPUT_GET, 'username', FILTER_SANITIZE_STRING);
@@ -16,7 +19,11 @@ if ($action == 'login') {
 		$session = array();
 		$token = SchnitzelUtils::getToken(128);
 		$session['token'] = $token;
-		$endDate = time() + $sessionDuration * 60;
+		if ($_GET["stay"] == 1){
+			$endDate = time() + 365 * 24 * 60 * 60;
+		} else{
+			$endDate = time() + $sessionDuration * 60;
+		}		
 		$session['end_date'] = $endDate;		
 		$session['user_id'] = $user['id'];
 		$db->createSession($session);

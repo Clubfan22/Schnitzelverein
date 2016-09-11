@@ -147,7 +147,7 @@ class SchnitzelDB {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			return false;
 		}
-		if (!$stmt->bind_param("sss", $session['token'], $session['end_date'], $session['user_id'])) {
+		if (!$stmt->bind_param("sis", $session['token'], $session['end_date'], $session['user_id'])) {
 			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 			return false;
 		}
@@ -159,7 +159,7 @@ class SchnitzelDB {
 
 	function updateSession(array $session) {
 		$mysqli = $this->mysqli;
-		if (!($stmt = $mysqli->prepare("UPDATE sessions SET end_date = ? WHERE token=?"))) {
+		if (!($stmt = $mysqli->prepare("UPDATE sessions SET end_date = FROM_UNIXTIME(?) WHERE token=?"))) {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			return false;
 		}

@@ -13,7 +13,7 @@
 				echo "<h1>Anmelden</h1>";
 				if (isset($_POST["sent"])) {
 					$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-					$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+					$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);					
 					$db = new SchnitzelDB();
 					$db->connect();
 					$user = $db->selectUserByName($username);
@@ -23,12 +23,17 @@
 						$session = array();
 						$token = SchnitzelUtils::getToken(128);
 						$session['token'] = $token;
-						$endDate = time() + $sessionDuration * 60;
+						if (isset($_POST["stay"])){
+							$endDate = time() + (365 * 24 * 60 * 60);
+						} else{
+							$endDate = time() + ($sessionDuration * 60);
+						}
 						$session['end_date'] = $endDate;
 						$session['user_id'] = $user['id'];
 						$db->createSession($session);
 						setcookie("token", $token, $endDate);
-						echo "<script type=\"text/javascript\">window.location.href = \"http://ammon.diskstation.me/Schnitzelverein/index.php\";</script>";
+						setcookie("stay", isset($_POST["stay"]), $endDate);
+						//echo "<script type=\"text/javascript\">window.location.href = \"http://ammon.diskstation.me/Schnitzelverein/index.php\";</script>";
 					} else {
 						echo "<p>Anmelden fehlgeschlagen! Benutzername und/oder Passwort falsch!</p>";
 					}
@@ -45,6 +50,7 @@
 				echo "<input type = \"password\" class = \"form-control\" id = \"inputPassword\" placeholder = \"Passwort\"  name=\"password\">";
 				echo "</div>";
 				echo "</div>";
+				echo "<div class=\"checkbox\"><label><input type=\"checkbox\" name=\"stay\">Angemeldet bleiben</label></div>";
 				echo "<button type=\"submit\" class=\"btn btn-primary\" name=\"sent\">Anmelden</button>";
 				echo "</div>";
 				echo "</div>";

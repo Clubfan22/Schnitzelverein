@@ -1,7 +1,11 @@
 <?php
 include 'SchnitzelUtils.php';
 $token = filter_input(INPUT_COOKIE, 'token', FILTER_UNSAFE_RAW);
+$stay = filter_input(INPUT_COOKIE, 'stay', FILTER_SANITIZE_NUMBER_INT);
 $isLoggedIn = SchnitzelUtils::isLoggedIn($token);
+if ($isLoggedIn){
+	SchnitzelUtils::keepSessionAlive($token, $stay);
+}
 $navigation = [
 	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg", "ending" => "html"],
 	//["page" => "geschichte", "title" => "Geschichte", "icon" => "file-text-o"],
@@ -13,6 +17,13 @@ $other_pages = [
 	["page" => "login", "title" => "Anmelden", "ending" => "php"],
 	["page" => "logout", "title" => "Abmelden", "ending" => "php"]
 ];
+if ($isLoggedIn){
+	$restricted_pages = [
+		["page" => "listbenutzer", "title" => "Benutzerverwaltung", "icon" =>"users", "ending" => "php"]
+	];
+	$navigation = array_merge($navigation, $restricted_pages);
+}
+
 $pages = array_merge($navigation, $other_pages);
 if (isset($_GET["page"])) {
 	$page = strtolower($_GET["page"]);

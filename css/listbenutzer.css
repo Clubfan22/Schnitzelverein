@@ -16,4 +16,10 @@
 .listbenutzer-buttons {
   white-space: nowrap;
 }
+.btn-primary {
+  width: 40px;
+}
+.benutzer-row {
+  padding-bottom: 5px;
+}
 /*# sourceMappingURL=listbenutzer.css.map */

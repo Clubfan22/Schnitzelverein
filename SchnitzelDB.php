@@ -52,15 +52,29 @@ class SchnitzelDB {
 	}
 
 	function updateUser(array $user) {
+		$newPassword = (isset($user["password"])||isset($user["salt"]));
+		$sql = "UPDATE users SET username = ?, ";
+		if ($newPassword){
+			$sql .= "password = ?, salt = ?, ";
+		}
+		$sql .= "email = ? WHERE id=?";
 		$mysqli = $this->mysqli;
-		if (!($stmt = $mysqli->prepare("UPDATE users SET username = ?, password = ?, salt = ?, email = ? WHERE id=?"))) {
+		if (!($stmt = $mysqli->prepare($sql))) {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			return false;
 		}
-		if (!$stmt->bind_param("ssssi", $user['username'], $user['password'], $user['salt'], $user['email'], $user['id'])) {
-			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-			return false;
+		if ($newPassword){
+			if (!$stmt->bind_param("ssssi", $user['username'], $user['password'], $user['salt'], $user['email'], $user['id'])) {
+				echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+				return false;
+			}
+		} else {
+			if (!$stmt->bind_param("ssi", $user['username'], $user['email'], $user['id'])) {
+				echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+				return false;
+			}
 		}
+		
 		if (!$stmt->execute()) {
 			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 			return false;
@@ -214,7 +228,7 @@ class SchnitzelDB {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			return false;
 		}
-		if (!$stmt->bind_param("sssss", $event['date'], $event['location'], $event['street'], $event['city'], $event['text'])) {
+		if (!$stmt->bind_param("sssss", $event['event_date'], $event['location'], $event['street'], $event['city'], $event['text'])) {
 			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 			return false;
 		}
@@ -231,7 +245,7 @@ class SchnitzelDB {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			return false;
 		}
-		if (!$stmt->bind_param("issssi", $event['event_date'], $event['location'], $event['street'], $event['city'], $event['text'], $event['id'])) {
+		if (!$stmt->bind_param("sssssi", $event['event_date'], $event['location'], $event['street'], $event['city'], $event['text'], $event['id'])) {
 			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 			return false;
 		}

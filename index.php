@@ -15,7 +15,8 @@ $navigation = [
 $other_pages = [
 	["page" => "impressum", "title" => "Impressum", "ending" => "html"],
 	["page" => "login", "title" => "Anmelden", "ending" => "php"],
-	["page" => "logout", "title" => "Abmelden", "ending" => "php"]
+	["page" => "logout", "title" => "Abmelden", "ending" => "php"],
+	["page" => "edittermin", "title" => "Termin bearbeiten", "ending" => "php"]
 ];
 if ($isLoggedIn){
 	$restricted_pages = [

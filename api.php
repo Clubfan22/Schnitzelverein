@@ -17,9 +17,7 @@ if ($action == 'login') {
 		$token = SchnitzelUtils::getToken(128);
 		$session['token'] = $token;
 		$endDate = time() + $sessionDuration * 60;
-		$session['end_date'] = $endDate;
-		//echo microtime();
-		//echo $user['id'];
+		$session['end_date'] = $endDate;		
 		$session['user_id'] = $user['id'];
 		$db->createSession($session);
 		setcookie("token", $token, $endDate);

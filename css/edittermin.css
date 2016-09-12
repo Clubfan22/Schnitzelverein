@@ -1,0 +1,22 @@
+/*
+*/
+/* 
+    Created on : 11.09.2016, 21:21:33
+    Author     : Marco Ammon (Clubfan)
+*/
+.form-control {
+  display: inline !important;
+}
+#dateInput {
+  width: 60%;
+}
+#storeBtn {
+  float: right;
+}
+#timeInput {
+  width: 75%;
+}
+#trumbowyg-editor {
+  font-family: 'Open Sans' !important;
+}
+/*# sourceMappingURL=edittermin.css.map */

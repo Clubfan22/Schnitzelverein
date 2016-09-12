@@ -1,13 +1,30 @@
 <?php
+include 'SchnitzelUtils.php';
+$token = filter_input(INPUT_COOKIE, 'token', FILTER_UNSAFE_RAW);
+$stay = filter_input(INPUT_COOKIE, 'stay', FILTER_SANITIZE_NUMBER_INT);
+$isLoggedIn = SchnitzelUtils::isLoggedIn($token);
+if ($isLoggedIn){
+	SchnitzelUtils::keepSessionAlive($token, $stay);
+}
 $navigation = [
-	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg"],
+	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg", "ending" => "html"],
 	//["page" => "geschichte", "title" => "Geschichte", "icon" => "file-text-o"],
-	["page" => "termine", "title" => "Termine", "icon" => "calendar"],
-	["page" => "mitglied", "title" => "Mitglied werden!"]
+	["page" => "termine", "title" => "Termine", "icon" => "calendar", "ending" => "php"],
+	["page" => "mitglied", "title" => "Mitglied werden!", "ending" => "html"]
 ];
 $other_pages = [
-	["page" => "impressum", "title" => "Impressum"]
+	["page" => "impressum", "title" => "Impressum", "ending" => "html"],
+	["page" => "login", "title" => "Anmelden", "ending" => "php"],
+	["page" => "logout", "title" => "Abmelden", "ending" => "php"],
+	["page" => "edittermin", "title" => "Termin bearbeiten", "ending" => "php"]
 ];
+if ($isLoggedIn){
+	$restricted_pages = [
+		["page" => "listbenutzer", "title" => "Benutzerverwaltung", "icon" =>"users", "ending" => "php"]
+	];
+	$navigation = array_merge($navigation, $restricted_pages);
+}
+
 $pages = array_merge($navigation, $other_pages);
 if (isset($_GET["page"])) {
 	$page = strtolower($_GET["page"]);
@@ -17,7 +34,7 @@ if (isset($_GET["page"])) {
 } else {
 	$page = "übersicht";
 }
-$title = get_title_from_page($page, $pages);
+$title = get_value_from_page($page, $pages, "title");
 ?><!DOCTYPE html>
 <html lang="de">
     <head>
@@ -25,7 +42,7 @@ $title = get_title_from_page($page, $pages);
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php echo $title ?></title>
+        <title><?php echo $title. " - 1. Deutscher Schnitzelverein e.V." ?></title>
 		<!-- Bootstrap -->
 		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -120,17 +137,26 @@ $title = get_title_from_page($page, $pages);
 			</nav>
 			<?php
 //Einbinden der eigentlich Content-Pages
-			include ('content/' . $page . '.html');
+			include ('content/' . $page . '.' . get_value_from_page($page, $pages, "ending"));
 			?>
 		</div>
 		<div id="footer">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-6 col-sm-6 footer-text">
+					<div class="col-xs-12 col-md-4 col-sm-6 footer-text">
 						<span>© 2016 1. Deutscher Schnitzelverein e.V.</span>
 					</div>					
-					<div class="col-md-6 col-sm-6 footer-text">
+					<div class="col-xs-6 col-md-4 col-sm-3 footer-text">
 						<a href="index.php?page=impressum">Impressum</a>
+					</div>
+					<div class="col-xs-6 col-md-4 col-sm-3 footer-text">
+						<?php
+						if (!$isLoggedIn){
+						echo "<a href=\"index.php?page=login\">Anmelden</a>";
+						} else {
+						echo "<a href=\"index.php?page=logout\">Abmelden</a>";
+						}
+						?>
 					</div>
 				</div>
 			</div>
@@ -149,10 +175,10 @@ function in_array_2d($needle, $haystack, $key) {
 	return false;
 }
 
-function get_title_from_page($page, $haystack) {
+function get_value_from_page($page, $haystack, $property) {
 	foreach ($haystack as $item) {
 		if ($item["page"] == $page) {
-			return $item["title"];
+			return $item[$property];
 		}
 	}
 	return false;

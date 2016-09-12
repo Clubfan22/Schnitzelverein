@@ -1,0 +1,20 @@
+/*
+*/
+/* 
+    Created on : 11.09.2016, 08:24:37
+    Author     : Marco Ammon (Clubfan)
+*/
+.jumbotron {
+  color: #4f3e23;
+  background-color: #c3c349;
+}
+.control-label {
+  text-align: left !important;
+}
+label {
+  font-weight: inherit;
+}
+.checkbox {
+  margin-bottom: inherit !important;
+}
+/*# sourceMappingURL=login.css.map */

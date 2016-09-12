@@ -1,0 +1,25 @@
+/*
+*/
+/* 
+    Created on : 11.09.2016, 10:54:59
+    Author     : Marco Ammon (Clubfan)
+*/
+.table > thead > tr > th {
+  border-bottom-color: #4f3e23;
+}
+.table > tbody > tr > th {
+  border-top-color: #4f3e23;
+}
+.table > tbody > tr > td > button > i {
+  font-size: 18px;
+}
+.listbenutzer-buttons {
+  white-space: nowrap;
+}
+.btn-primary {
+  width: 40px;
+}
+.benutzer-row {
+  padding-bottom: 5px;
+}
+/*# sourceMappingURL=listbenutzer.css.map */

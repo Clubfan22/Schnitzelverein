@@ -9,7 +9,7 @@ if ($isLoggedIn){
 $navigation = [
 	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg", "ending" => "html"],
 	//["page" => "geschichte", "title" => "Geschichte", "icon" => "file-text-o"],
-	["page" => "termine", "title" => "Termine", "icon" => "calendar", "ending" => "html"],
+	["page" => "termine", "title" => "Termine", "icon" => "calendar", "ending" => "php"],
 	["page" => "mitglied", "title" => "Mitglied werden!", "ending" => "html"]
 ];
 $other_pages = [
@@ -42,7 +42,7 @@ $title = get_value_from_page($page, $pages, "title");
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php echo $title ?></title>
+        <title><?php echo $title. " - 1. Deutscher Schnitzelverein e.V." ?></title>
 		<!-- Bootstrap -->
 		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">

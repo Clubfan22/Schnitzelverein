@@ -33,7 +33,7 @@ if (isset($_POST["store"])) {
 					echo "<p>Bearbeiten des Termins mit der ID ".$id." fehlgeschlagen!</p>";
 				} else {
 					$id = $res;
-					//echo "<script type=\"text/javascript\">window.location.href = \"http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine\";</script>";
+					echo "<script type=\"text/javascript\">window.location.href = \"http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine\";</script>";
 				}
 			}
 	} else {
@@ -47,13 +47,15 @@ if (isset($_POST["store"])) {
 		$event["street"] = filter_input(INPUT_POST, "streetInput", FILTER_SANITIZE_STRING);
 		$event["city"] = filter_input(INPUT_POST, "cityInput", FILTER_SANITIZE_STRING);
 		$event["text"] = filter_input(INPUT_POST, "textInput", FILTER_UNSAFE_RAW);
+		$event["date"] = $event_date->format("Y-m-d");
+		$event["time"] = $event_date->format("H:i");
 		$db = new SchnitzelDB();
 		$db->connect();
 		$res = $db->createEvent($event);
 		if ($res == false){
 			echo "<p>Anlegen des Termins fehlgeschlagen!</p>";
 		} else {
-			//echo "<script type=\"text/javascript\">window.location.href = \"http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine\";</script>";
+			echo "<script type=\"text/javascript\">window.location.href = \"http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine\";</script>";
 		}
 	}
 } else {

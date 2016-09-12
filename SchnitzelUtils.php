@@ -67,5 +67,44 @@ class SchnitzelUtils {
 		setcookie("token", $token, $endDate);
 		setcookie("stay", $stay, $endDate);
 	}
+	static function displayEvents(array $events, $mode = 'html', $isLoggedIn = false) {
+		switch ($mode) {
+			case 'html':
+				foreach ($events as $event) {
+					$date = new DateTime($event["event_date"]);
+					setlocale(LC_TIME, "de_DE.utf8");
+					$event["date"] = strftime("%e. %B %Y", (int)$date->format("U"));
+					$event["time"] = $date->format("H:i");
+					echo "<div class=\"row\">";
+						echo "<div class=\"col-lg-12\">";
+							echo "<div class=\"termin\">";
+								echo "<div class=\"col-lg-12 termin-date\">";
+									echo "<h3>";
+									echo $event["date"];
+									if($isLoggedIn){
+										echo "<button type=\"submit\" name=\"delete\" value=\"".$event["id"]."\" class=\"btn btn-primary\" id=\"removeBtn".$event["id"]."\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></button>";
+										echo "<a href=\"index.php?page=edittermin&id=".$event["id"]."\" class=\"btn btn-primary\" id=\"editBtn".$event["id"]."\" role=\"button\"\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>";
+									}
+									echo "</h3>";									
+								echo "</div>";
+								echo "<div class=\"termin-heading col-md-6 col-sm-12\">";
+									echo "<h4>" . $event["time"] . " Uhr</h4>";
+									echo "<address>";
+										echo "<strong>" . $event["location"] . "</strong><br>";
+										echo $event["street"] . "<br>";
+										echo $event["city"] . "<br>";
+									echo "</address>";
+								echo "</div>";
+								echo "<div class=\"termin-body col-md-6 col-sm-12\">";
+									echo $event["text"];
+								echo "</div>";
+								echo "<div style=\"display: block; clear: both;\"></div>";
+							echo "</div>";
+						echo "</div>";
+					echo "</div>";
+				}
+				break;
+		}
+	}
 
 }

@@ -26,9 +26,6 @@ if (isset($_POST["update"])) {
 	$newUser["username"] = filter_input(INPUT_POST, 'usernameInput' . $id, FILTER_SANITIZE_STRING);
 	$newUser["email"] = filter_input(INPUT_POST, 'emailInput' . $id, FILTER_SANITIZE_EMAIL);
 	$password = filter_input(INPUT_POST, 'passwordInput' . $id, FILTER_SANITIZE_STRING);
-	echo $newUser["id"];
-	echo $newUser["username"];
-	echo $newUser["email"];
 	if ($password != ""){
 		$salt = SchnitzelUtils::getToken(63);
 		$newUser['salt'] = $salt;

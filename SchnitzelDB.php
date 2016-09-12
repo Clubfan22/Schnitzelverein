@@ -273,12 +273,21 @@ class SchnitzelDB {
 		return true;
 	}
 
-	function listEventsByTime($order = 'DESC', $limit = 0) {
+	function listEventsByTime($order = 'DESC', $limit = 0, $timeFrame='both') {
 		if (!($order == 'DESC' || $order == 'ASC' || $oder == '')) {
 			return false;
 		}
 		$mysqli = $this->mysqli;
-		$sql = "SELECT * FROM events ORDER BY event_date " . $order;
+		$sql = "SELECT * FROM events ";
+		switch($timeFrame){
+			case 'earlier':
+				$sql .= "WHERE event_date < NOW() ";
+				break;
+			case 'later':
+				$sql .= "WHERE event_date >= NOW() ";
+				break;
+		}
+		$sql .= "ORDER BY event_date " . $order;
 		if (is_numeric($order)) {
 			if ($order > 0) {
 				$sql .= " LIMIT " . $limit;

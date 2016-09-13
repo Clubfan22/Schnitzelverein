@@ -27,6 +27,7 @@
 		$upcomingEvents = $db->listEventsByTime('DESC', 0, 'later');
 		SchnitzelUtils::displayEvents($upcomingEvents, 'html', $isLoggedIn);
 		?>
+		<p>Du willst immer auf dem neusten Stand sein, aber nicht täglich eine weitere Website aufrufen? Kein Problem, die Termine des Schnitzelvereins können ganz einfach in deinen Google-Kalender oder andere Kalender-Applikationen importiert werden.<a class="subscribe-to-calendar" href="http://www.google.com/calendar/render?cid=http://ammon.diskstation.me/Schnitzelverein/ical.php?noCache1" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a><a class="subscribe-to-calendar" href="webcal://ammon.diskstation.me/Schnitzelverein/ical.php" target="_blank"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></a></p>
 	<h1>Vergangene Termine:</h1>
 	<?php
 	$db = new SchnitzelDB();

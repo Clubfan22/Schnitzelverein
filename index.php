@@ -1,4 +1,5 @@
 <?php
+ini_set('auto_detect_line_endings', true);
 include 'SchnitzelUtils.php';
 $token = filter_input(INPUT_COOKIE, 'token', FILTER_UNSAFE_RAW);
 $stay = filter_input(INPUT_COOKIE, 'stay', FILTER_SANITIZE_NUMBER_INT);

@@ -16,6 +16,8 @@ Aufbau
 
 * SchnitzelUtils.php : Sammlung mehrfach verwendeter Funktionen wie Token- oder Passwort-Erzeugung
 
+* Settings.php : Einstellungen zur Datenbank und der API
+
 * bootstrap/ : Angepasstes Bootstrap
 
 * content/ : Inhaltsseiten

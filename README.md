@@ -6,6 +6,16 @@ Aufbau
 ============
 * index.php : Grundseite
 
+* api.php : API (kann in Settings.php (de-)aktiviert werden)
+
+* installer.php : Installationsskript (sollte nach einmaligem Ausführen gelöscht werden)
+
+* ical.php : Termine als ical-Datei
+
+* SchnitzelDB.php : Abkapslung der Datenbank mit Funktionen zum Lesen, Erstellen, Bearbeiten und Löschen
+
+* SchnitzelUtils.php : Sammlung mehrfach verwendeter Funktionen wie Token- oder Passwort-Erzeugung
+
 * bootstrap/ : Angepasstes Bootstrap
 
 * content/ : Inhaltsseiten
@@ -24,3 +34,4 @@ Verwendete Frameworks
 ============
 * Bootstrap
 * Font-Awesome
+* Trumbowyg

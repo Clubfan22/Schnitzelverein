@@ -5,7 +5,7 @@ header('Content-Disposition: attachment; filename=Termine_Schnitzelverein.ics');
 include "SchnitzelDB.php";
 echo "BEGIN:VCALENDAR\r\n";
 echo "VERSION:2.0\r\n";
-echo "PRODID:http://ammon.diskstation.me/Schnitzelverein/ical.php\r\n";
+echo "PRODID:http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine\r\n";
 echo "METHOD:PUBLISH\r\n";
 
 $db = new SchnitzelDB();
@@ -17,7 +17,7 @@ foreach($events as $event){
 	echo "ORGANIZER:CN=\"1. Deutscher Schnitzelverein e.V.\":MAILTO:ammon.marco@t-online.de\r\n";
 	echo "LOCATION:".$event["location"]." ".$event["street"]." ".$event["city"]."\r\n";
 	echo "SUMMARY:Treffen 1. Deutscher Schnitzelverein\r\n";
-	echo "DESCRIPTION:".$event["text"]."\r\n";
+	echo "DESCRIPTION;ALTREP=\"http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine#event-".$event["id"]."\":".$event["text"]."\r\n";
 	echo "X-ALT-DESC;FMTTYPE=text/html:".$event["text"]."\r\n";
 	echo "CLASS:PUBLIC\r\n";
 	//TODO: Timestamp richtig konvertieren

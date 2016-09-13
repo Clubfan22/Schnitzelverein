@@ -77,7 +77,7 @@ class SchnitzelUtils {
 					$event["time"] = $date->format("H:i");
 					echo "<div class=\"row\">";
 						echo "<div class=\"col-lg-12\">";
-							echo "<div class=\"termin\">";
+							echo "<div class=\"termin\" id=\"event-".$event["id"]."\">";
 								echo "<div class=\"col-lg-12 termin-date\">";
 									echo "<h3>";
 									echo $event["date"];

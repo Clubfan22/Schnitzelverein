@@ -51,7 +51,12 @@ class SchnitzelUtils {
 		//echo $expiration->format("U");
 		return (time() < $expiration->format("U"));
 	}
-	
+	static function isAdministrator($token) {
+		$db = new SchnitzelDB();
+		$db->connect();
+		$user = $db->selectUserBySessionToken($token);
+		return $user["administrator"];
+	}
 	static function keepSessionAlive($token, $stay = 0){
 		include 'Settings.php';
 		$db = new SchnitzelDB();
@@ -67,7 +72,7 @@ class SchnitzelUtils {
 		setcookie("token", $token, $endDate);
 		setcookie("stay", $stay, $endDate);
 	}
-	static function displayEvents(array $events, $mode = 'html', $isLoggedIn = false) {
+	static function displayEvents(array $events, $mode = 'html', $isAdministrator = false) {
 		switch ($mode) {
 			case 'html':
 				foreach ($events as $event) {
@@ -81,7 +86,7 @@ class SchnitzelUtils {
 								echo "<div class=\"col-lg-12 termin-date\">";
 									echo "<h3>";
 									echo $event["date"];
-									if($isLoggedIn){
+									if($isAdministrator){
 										echo "<button type=\"submit\" name=\"delete\" value=\"".$event["id"]."\" class=\"btn btn-primary\" id=\"removeBtn".$event["id"]."\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></button>";
 										echo "<a href=\"index.php?page=edittermin&id=".$event["id"]."\" class=\"btn btn-primary\" id=\"editBtn".$event["id"]."\" role=\"button\"\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>";
 									}

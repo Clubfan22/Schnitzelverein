@@ -16,7 +16,7 @@
 	<h1>
 		Kommende Termine:
 		<?php
-		if ($isLoggedIn){
+		if ($isAdministrator){
 			echo "<a href=\"index.php?page=edittermin\" class=\"btn btn-primary\" id=\"createBtn\" role=\"button\"><i class=\"fa fa-calendar-plus-o\" aria-hidden=\"true\"></i></a>";
 		}
 		?>
@@ -25,7 +25,7 @@
 		$db = new SchnitzelDB();
 		$db->connect();
 		$upcomingEvents = $db->listEventsByTime('DESC', 0, 'later');
-		SchnitzelUtils::displayEvents($upcomingEvents, 'html', $isLoggedIn);
+		SchnitzelUtils::displayEvents($upcomingEvents, 'html', $isAdministrator);
 		?>
 		<p>Du willst immer auf dem neusten Stand sein, aber nicht täglich eine weitere Website aufrufen? Kein Problem, die Termine des Schnitzelvereins können ganz einfach in deinen Google-Kalender oder andere Kalender-Applikationen importiert werden.<a class="subscribe-to-calendar" href="http://www.google.com/calendar/render?cid=http://ammon.diskstation.me/Schnitzelverein/ical.php?noCache1" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a><a class="subscribe-to-calendar" href="webcal://ammon.diskstation.me/Schnitzelverein/ical.php" target="_blank"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></a></p>
 	<h1>Vergangene Termine:</h1>
@@ -33,7 +33,7 @@
 	$db = new SchnitzelDB();
 	$db->connect();
 	$earlierEvents = $db->listEventsByTime('DESC', 0, 'earlier');
-	SchnitzelUtils::displayEvents($earlierEvents, 'html', $isLoggedIn);
+	SchnitzelUtils::displayEvents($earlierEvents, 'html', $isAdministrator);
 	?>
 	</form>
 </div>

@@ -4,8 +4,10 @@ include 'SchnitzelUtils.php';
 $token = filter_input(INPUT_COOKIE, 'token', FILTER_UNSAFE_RAW);
 $stay = filter_input(INPUT_COOKIE, 'stay', FILTER_SANITIZE_NUMBER_INT);
 $isLoggedIn = SchnitzelUtils::isLoggedIn($token);
+$isAdministrator = false;
 if ($isLoggedIn){
 	SchnitzelUtils::keepSessionAlive($token, $stay);
+	$isAdministrator = SchnitzelUtils::isAdministrator($token);
 }
 $navigation = [
 	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg", "ending" => "html"],

@@ -37,11 +37,11 @@ class SchnitzelDB {
 
 	function createUser(array $user) {
 		$mysqli = $this->mysqli;
-		if (!($stmt = $mysqli->prepare("INSERT INTO users(id, username, password, salt, email) VALUES (null, ?, ?, ?, ?)"))) {
+		if (!($stmt = $mysqli->prepare("INSERT INTO users(id, username, password, salt, email, administrator) VALUES (null, ?, ?, ?, ?, ?)"))) {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			return false;
 		}
-		if (!$stmt->bind_param("ssss", $user['username'], $user['password'], $user['salt'], $user['email'])) {
+		if (!$stmt->bind_param("ssssi", $user['username'], $user['password'], $user['salt'], $user['email'], $user['administrator'])) {
 			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 			return false;
 		}
@@ -57,19 +57,19 @@ class SchnitzelDB {
 		if ($newPassword){
 			$sql .= "password = ?, salt = ?, ";
 		}
-		$sql .= "email = ? WHERE id=?";
+		$sql .= "email = ?, administrator=? WHERE id=?";
 		$mysqli = $this->mysqli;
 		if (!($stmt = $mysqli->prepare($sql))) {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			return false;
 		}
 		if ($newPassword){
-			if (!$stmt->bind_param("ssssi", $user['username'], $user['password'], $user['salt'], $user['email'], $user['id'])) {
+			if (!$stmt->bind_param("ssssii", $user['username'], $user['password'], $user['salt'], $user['email'], $user['administrator'], $user['id'])) {
 				echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 				return false;
 			}
 		} else {
-			if (!$stmt->bind_param("ssi", $user['username'], $user['email'], $user['id'])) {
+			if (!$stmt->bind_param("ssii", $user['username'], $user['email'], $user['administrator'], $user['id'])) {
 				echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 				return false;
 			}
@@ -135,13 +135,31 @@ class SchnitzelDB {
 		$user = $res->fetch_assoc();
 		return $user;
 	}
+	function selectUserBySessionToken($token) {
+		$mysqli = $this->mysqli;
+		if (!($stmt = $mysqli->prepare("SELECT * FROM users JOIN (sessions) ON (users.id=sessions.user_id) WHERE sessions.token=?"))) {
+			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			return false;
+		}
+		if (!$stmt->bind_param("s", $token)) {
+			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		if (!$stmt->execute()) {
+			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		$res = $stmt->get_result();
+		$user = $res->fetch_assoc();
+		return $user;
+	}
 	
 	function listUsers($order="ASC"){
 		if (!($order == 'DESC' || $order == 'ASC')) {
 			return false;
 		}
 		$mysqli = $this->mysqli;
-		$sql = "SELECT id, username, email FROM users ORDER BY id " . $order;
+		$sql = "SELECT id, username, email, administrator FROM users ORDER BY id " . $order;
 		
 		if (!($stmt = $mysqli->prepare($sql))) {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;

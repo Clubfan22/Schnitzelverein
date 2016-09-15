@@ -22,4 +22,7 @@
 .benutzer-row {
   padding-bottom: 5px;
 }
+input[type="checkbox"] {
+  margin: 0px !important;
+}
 /*# sourceMappingURL=listbenutzer.css.map */

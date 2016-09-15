@@ -2,8 +2,8 @@
 <link href="css/edittermin.css" rel="stylesheet">
 <link rel="stylesheet" href="trumbowyg/dist/ui/trumbowyg-schnitzel.css">
 <?php
-global $isLoggedIn;
-if (!$isLoggedIn) {
+global $isAdministrator;
+if (!$isAdministrator) {
 	die();
 }
 

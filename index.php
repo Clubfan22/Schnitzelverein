@@ -19,7 +19,9 @@ $other_pages = [
 	["page" => "impressum", "title" => "Impressum", "ending" => "html"],
 	["page" => "login", "title" => "Anmelden", "ending" => "php"],
 	["page" => "logout", "title" => "Abmelden", "ending" => "php"],
-	["page" => "edittermin", "title" => "Termin bearbeiten", "ending" => "php"]
+	["page" => "edittermin", "title" => "Termin bearbeiten", "ending" => "php"],
+	["page" => "registration", "title" => "Registrieren", "ending" => "php"],
+	["page" => "aktivierung", "title" => "Aktivieren", "ending" => "php"]
 ];
 if ($isLoggedIn){
 	$restricted_pages = [

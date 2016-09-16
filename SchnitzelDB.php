@@ -154,6 +154,25 @@ class SchnitzelDB {
 		return $user;
 	}
 	
+	function selectUserByPasswordHash($hash) {
+		$mysqli = $this->mysqli;
+		if (!($stmt = $mysqli->prepare("SELECT * FROM users WHERE password=?"))) {
+			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			return false;
+		}
+		if (!$stmt->bind_param("s", $hash)) {
+			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		if (!$stmt->execute()) {
+			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		$res = $stmt->get_result();
+		$user = $res->fetch_assoc();
+		return $user;
+	}
+	
 	function listUsers($order="ASC"){
 		if (!($order == 'DESC' || $order == 'ASC')) {
 			return false;

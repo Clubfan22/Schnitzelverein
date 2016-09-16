@@ -95,7 +95,7 @@ class SchnitzelUtils {
 								echo "<div class=\"termin-heading col-md-6 col-sm-12\">";
 									echo "<h4>" . $event["time"] . " Uhr</h4>";
 									echo "<address>";
-										echo "<strong>" . $event["location"] . "</strong><br>";
+										echo "<strong>" . $event["location"] . "<a href=\"https://www.google.de/maps?q=".urlencode($event["location"]." ".$event["street"]." ".$event["city"])."\"><i class=\"fa fa-map-marker location-marker\" aria-hidden=\"true\"></i></a></strong><br>";
 										echo $event["street"] . "<br>";
 										echo $event["city"] . "<br>";
 									echo "</address>";

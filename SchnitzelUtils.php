@@ -86,6 +86,21 @@ class SchnitzelUtils {
 								echo "<div class=\"col-lg-12 termin-date\">";
 									echo "<h3>";
 									echo $event["date"];
+									echo "<div class=\"btn-group\">";
+									echo "<button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
+										echo "<i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i>";
+									echo "</button>";
+									echo "<ul class=\"dropdown-menu\">";
+									$title = urlencode("Termin des 1. Deutschen Schnitzelvereins am ".$event["date"]);
+									$url = urlencode("https://ammon.diskstation.me/Schnitzelverein/index.php?page=termine#event-".$event["id"]);
+										echo "<li><a target=\"_blank\" href=\"http://www.facebook.com/sharer.php?s=100&p[title]=".$title."&p[url]=".$url."\">";
+										echo "<i class=\"fa fa-facebook\" aria-hidden=\"true\"></i>&nbsp;Facebook</a></li>";
+										echo "<li><a target=\"_blank\" href=\"http://twitter.com/share?text=".$title."&url=".$url."&counturl=".$url. "\">";
+										echo "<i class=\"fa fa-twitter\" aria-hidden=\"true\"></i>&nbsp;Twitter</a></li>";
+										echo "<li class=\"hidden-lg hidden-md\"><a target=\"_blank\" href=\"whatsapp://send?text=".$title.": ".$url."\">";
+										echo "<i class=\"fa fa-whatsapp\" aria-hidden=\"true\"></i>&nbsp;WhatsApp</a></li>";									
+									echo "</ul>";
+									echo "</div>";
 									if($isAdministrator){
 										echo "<button type=\"submit\" name=\"delete\" value=\"".$event["id"]."\" class=\"btn btn-primary\" id=\"removeBtn".$event["id"]."\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></button>";
 										echo "<a href=\"index.php?page=edittermin&id=".$event["id"]."\" class=\"btn btn-primary\" id=\"editBtn".$event["id"]."\" role=\"button\"\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>";

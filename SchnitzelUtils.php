@@ -87,7 +87,7 @@ class SchnitzelUtils {
 									echo "<h3>";
 									echo $event["date"];
 									echo "<div class=\"btn-group\">";
-									echo "<button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
+									echo "<button type=\"button\" class=\"btn btn-primary dropdown-toggle share-button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
 										echo "<i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i>";
 									echo "</button>";
 									echo "<ul class=\"dropdown-menu dropdown-menu-right\">";

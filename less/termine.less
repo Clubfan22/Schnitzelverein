@@ -14,6 +14,9 @@
 	background-color: @navbar-default-link-active-bg;
 	border-color: @navbar-default-link-active-bg;
 }
+.location-marker {
+		color: @navbar-default-link-color !important;
+}
 address {
 	margin-bottom: 10px;
 }
@@ -37,6 +40,15 @@ h1 {
 	padding-top: 10px !important;
 	margin-bottom: 0px;
 }
+.dropdown-menu {
+	background-color: @navbar-default-link-color;
+}
+.dropdown-menu > li > a {
+	color: @navbar-default-link-active-bg !important;	
+}
+.dropdown-menu > li > a:hover {
+	background-color: darken(@navbar-default-link-color, 5%);
+}
 @media (min-width: 992px){
 	.termin-body {
 		padding-top: 10px !important;
@@ -48,6 +60,9 @@ h1 {
 		background-color: @navbar-default-link-color !important;
 		color: @navbar-default-link-active-bg !important;
 	}
+	.location-marker {
+		color: @navbar-default-link-active-bg !important;
+}
 }
 @media (max-width: 767px) {
 	.termin-heading > h4 {

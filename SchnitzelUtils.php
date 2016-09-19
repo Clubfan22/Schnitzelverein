@@ -90,7 +90,7 @@ class SchnitzelUtils {
 									echo "<button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
 										echo "<i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i>";
 									echo "</button>";
-									echo "<ul class=\"dropdown-menu\">";
+									echo "<ul class=\"dropdown-menu dropdown-menu-right\">";
 									$title = urlencode("Termin des 1. Deutschen Schnitzelvereins am ".$event["date"]);
 									$url = urlencode("https://ammon.diskstation.me/Schnitzelverein/index.php?page=termine#event-".$event["id"]);
 										echo "<li><a target=\"_blank\" href=\"http://www.facebook.com/sharer.php?s=100&p[title]=".$title."&p[url]=".$url."\">";

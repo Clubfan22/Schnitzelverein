@@ -13,6 +13,9 @@
   background-color: #4f3e23;
   border-color: #4f3e23;
 }
+.location-marker {
+  color: #c3c349 !important;
+}
 address {
   margin-bottom: 10px;
 }
@@ -39,6 +42,15 @@ h1 {
   padding-top: 10px !important;
   margin-bottom: 0px;
 }
+.dropdown-menu {
+  background-color: #c3c349;
+}
+.dropdown-menu > li > a {
+  color: #4f3e23 !important;
+}
+.dropdown-menu > li > a:hover {
+  background-color: #b6b63c;
+}
 @media (min-width: 992px) {
   .termin-body {
     padding-top: 10px !important;
@@ -48,6 +60,9 @@ h1 {
   }
   .termin-heading {
     background-color: #c3c349 !important;
+    color: #4f3e23 !important;
+  }
+  .location-marker {
     color: #4f3e23 !important;
   }
 }

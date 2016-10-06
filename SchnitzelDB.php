@@ -14,7 +14,7 @@ class SchnitzelDB {
 
 	function connect() {
 		include 'Settings.php';
-		$mysqli = new mysqli("localhost", $dbUser, $dbPassword, $dbName);
+		$mysqli = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 		$mysqli->set_charset('utf8');
 		if ($mysqli->connect_errno) {
 			echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -25,7 +25,7 @@ class SchnitzelDB {
 
 	function createTables() {
 		$mysqli = $this->mysqli;
-		$tables = ["users", "events", "sessions"];
+		$tables = ["users", "events", "sessions", "possible_dates", "answers"];
 		foreach ($tables as $table) {
 			$sql = file_get_contents("./sql/create_" . $table . ".sql");
 			if (!$mysqli->query($sql)) {

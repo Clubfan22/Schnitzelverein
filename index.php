@@ -1,4 +1,5 @@
 <?php
+ob_start();
 ini_set('auto_detect_line_endings', true);
 include 'SchnitzelUtils.php';
 $token = filter_input(INPUT_COOKIE, 'token', FILTER_UNSAFE_RAW);
@@ -19,9 +20,9 @@ $other_pages = [
 	["page" => "impressum", "title" => "Impressum", "ending" => "html"],
 	["page" => "login", "title" => "Anmelden", "ending" => "php"],
 	["page" => "logout", "title" => "Abmelden", "ending" => "php"],
-	["page" => "edittermin", "title" => "Termin bearbeiten", "ending" => "php"],
-	["page" => "registration", "title" => "Registrieren", "ending" => "php"],
-	["page" => "aktivierung", "title" => "Aktivieren", "ending" => "php"]
+	["page" => "edittermin", "title" => "Termin bearbeiten", "ending" => "php"]//,
+	//["page" => "registration", "title" => "Registrieren", "ending" => "php"],
+	//["page" => "aktivierung", "title" => "Aktivieren", "ending" => "php"]
 ];
 if ($isLoggedIn){
 	$restricted_pages = [
@@ -54,7 +55,7 @@ $title = get_value_from_page($page, $pages, "title");
 		<link href="icomoon/style.css" rel="stylesheet">
 		<link href="css/schnitzel.css" rel="stylesheet">
 
-		<link rel="icon" href="resources/logo.png">
+		<!--<link rel="icon" href="resources/logo.png">-->
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -75,7 +76,7 @@ $title = get_value_from_page($page, $pages, "title");
 			<div class="visible-lg" id="banner">
 				<div id="logo">
 					<a href="index.php">
-						<img src="resources/logo.png" alt="Logo" height="128" width="128">
+						<img src="" alt="Logo" height="128" width="128">
 					</a>
 				</div>		
 				<div class="banner-container">
@@ -91,7 +92,7 @@ $title = get_value_from_page($page, $pages, "title");
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index.php"><img class="hidden-lg" id="navbar-logo" src="resources/logo.png" alt="Logo">
+						<a class="navbar-brand" href="index.php"><img class="hidden-lg" id="navbar-logo" src="" alt="Logo">
 							<span class="navbar-title">1. Deutscher Schnitzelverein e.V.</span>
 							<span class="navbar-title-short">Schnitzelverein e.V.</span>
 						</a>					
@@ -133,7 +134,7 @@ $title = get_value_from_page($page, $pages, "title");
 								<a href="#"><i class="icon-instagram-square-simple" aria-hidden="true"></i><span class="hidden-sm social-text"> Instagram</span></a>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span class="hidden-sm social-text"> Twitter</span></a>
+								<a href="https://twitter.com/Schnitzelverein" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i><span class="hidden-sm social-text"> Twitter</span></a>
 							</li>
 						</ul>
 					</div>
@@ -170,7 +171,7 @@ $title = get_value_from_page($page, $pages, "title");
     </body>
 </html>
 <?php
-
+ob_end_flush();
 function in_array_2d($needle, $haystack, $key) {
 	foreach ($haystack as $item) {
 		if ($item[$key] == $needle) {

@@ -75,9 +75,9 @@ class SchnitzelUtils {
 	static function displayEvents(array $events, $mode = 'html', $isAdministrator = false) {
 		switch ($mode) {
 			case 'html':
+				setlocale(LC_TIME, "de_DE.utf8");
 				foreach ($events as $event) {
-					$date = new DateTime($event["event_date"]);
-					setlocale(LC_TIME, "de_DE.utf8");
+					$date = new DateTime($event["event_date"]);					
 					$event["date"] = strftime("%e. %B %Y", (int)$date->format("U"));
 					$event["time"] = $date->format("H:i");
 					echo "<div class=\"row\">";
@@ -92,7 +92,7 @@ class SchnitzelUtils {
 									echo "</button>";
 									echo "<ul class=\"dropdown-menu dropdown-menu-right\">";
 									$title = urlencode("Termin des 1. Deutschen Schnitzelvereins am ".$event["date"]);
-									$url = urlencode("https://ammon.diskstation.me/Schnitzelverein/index.php?page=termine#event-".$event["id"]);
+									$url = urlencode("https://schnitzelverein.de/Termine#event-".$event["id"]);
 										echo "<li><a target=\"_blank\" href=\"http://www.facebook.com/sharer.php?s=100&p[title]=".$title."&p[url]=".$url."\">";
 										echo "<i class=\"fa fa-facebook\" aria-hidden=\"true\"></i>&nbsp;Facebook</a></li>";
 										echo "<li><a target=\"_blank\" href=\"http://twitter.com/share?text=".$title."&url=".$url."&counturl=".$url. "\">";

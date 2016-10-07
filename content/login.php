@@ -33,7 +33,7 @@
 						$db->createSession($session);
 						setcookie("token", $token, $endDate);
 						setcookie("stay", isset($_POST["stay"]), $endDate);
-						echo "<script type=\"text/javascript\">window.location.href = \"https://schnitzelverein.de/index.php\";</script>";
+						echo "<script type=\"text/javascript\">window.location.href = \"https://schnitzelverein.de\";</script>";
 					} else {
 						echo "<p>Anmelden fehlgeschlagen! Benutzername und/oder Passwort falsch!</p>";
 					}

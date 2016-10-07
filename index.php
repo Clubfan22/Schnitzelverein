@@ -11,10 +11,10 @@ if ($isLoggedIn){
 	$isAdministrator = SchnitzelUtils::isAdministrator($token);
 }
 $navigation = [
-	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg", "ending" => "html"],
+	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg", "ending" => "html", "description" => "Du liebst Schnitzel und Geselligkeit? Wir vom 1. Deutschen Schnitzelverein e.V. auch!"],
 	//["page" => "geschichte", "title" => "Geschichte", "icon" => "file-text-o"],
-	["page" => "termine", "title" => "Termine", "icon" => "calendar", "ending" => "php"],
-	["page" => "mitglied", "title" => "Mitglied werden!", "ending" => "html"]
+	["page" => "termine", "title" => "Termine", "icon" => "calendar", "ending" => "php", "description" => "Du willst kein Treffen des Schnitzelvereins mehr verpassen? Hier gibt es alle bisherigen und zukünftigen Termine."],
+	["page" => "mitglied", "title" => "Mitglied werden!", "ending" => "html", "description" => "Du willst Mitglied im 1. Deutschen Schnitzelverein e.V. werden? Dann nichts wie los und hier anmelden!"]
 ];
 $other_pages = [
 	["page" => "impressum", "title" => "Impressum", "ending" => "html"],
@@ -44,10 +44,12 @@ $title = get_value_from_page($page, $pages, "title");
 ?><!DOCTYPE html>
 <html lang="de">
     <head>
-		<link href='https://fonts.googleapis.com/css?family=Rock+Salt|Open+Sans|Kaushan+Script' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans|Kaushan+Script' rel='stylesheet' type='text/css'>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="<?php echo get_value_from_page($page, $pages, "description"); ?>">
+		
         <title><?php echo $title. " - 1. Deutscher Schnitzelverein e.V." ?></title>
 		<!-- Bootstrap -->
 		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -110,7 +112,7 @@ $title = get_value_from_page($page, $pages, "title");
 								};
 								echo "\"";
 								?>>
-									<a href="<?php echo "index.php?page=" . $element[page]; ?>"> <?php
+									<a href="<?php echo ucfirst($element[page]); ?>"> <?php
 										if (isset($element[icon])) {
 											echo "<i class=\"fa fa-" . $element[icon] . " visible-sm\" aria-hidden=\"true\"></i>";
 										};
@@ -153,7 +155,7 @@ $title = get_value_from_page($page, $pages, "title");
 						<span>© 2016 1. Deutscher Schnitzelverein e.V.</span>
 					</div>					
 					<div class="col-xs-6 col-md-4 col-sm-3 footer-text">
-						<a href="index.php?page=impressum">Impressum</a>
+						<a href="Impressum">Impressum</a>
 					</div>
 					<div class="col-xs-6 col-md-4 col-sm-3 footer-text">
 						<?php

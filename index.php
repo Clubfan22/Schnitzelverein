@@ -17,7 +17,7 @@ $navigation = [
 	["page" => "mitglied", "title" => "Mitglied werden!", "ending" => "html", "description" => "Du willst Mitglied im 1. Deutschen Schnitzelverein e.V. werden? Dann nichts wie los und hier anmelden!"]
 ];
 $other_pages = [
-	["page" => "impressum", "title" => "Impressum", "ending" => "html"],
+	["page" => "impressum", "title" => "Impressum", "ending" => "html", "description" => "1. Deutscher Schnitzelverein e.V. Nürnberger Straße 2 91244 Reichenschwand"],
 	["page" => "login", "title" => "Anmelden", "ending" => "php"],
 	["page" => "logout", "title" => "Abmelden", "ending" => "php"],
 	["page" => "edittermin", "title" => "Termin bearbeiten", "ending" => "php"]//,

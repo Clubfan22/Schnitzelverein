@@ -82,9 +82,13 @@ class SchnitzelUtils {
 					$event["time"] = $date->format("H:i");
 					echo "<div class=\"row\">";
 						echo "<div class=\"col-lg-12\">";
-							echo "<div class=\"termin\" id=\"event-".$event["id"]."\">";
+							echo "<div itemscope itemtype=\"http://schema.org/Event\" class=\"termin\" id=\"event-" . $event["id"] . "\">";
+								echo "<meta itemprop=\"name\" content=\"Sitzung des 1. Deutschen Schnitzelvereins\">";
+								echo "<meta itemprop=\"url\" content=\"https://schnitzelverein.de/Termine#event-" . $event["id"] . "\">"; 
 								echo "<div class=\"col-lg-12 termin-date\">";
 									echo "<h3>";
+									echo "<meta itemprop=\"startDate\" content=\"".$date->format(DateTime::ATOM)."\">";
+									echo "<meta itemprop=\"endDate\" content=\"".$date->add(new DateInterval('PT3H'))->format(DateTime::ATOM)."\">";
 									echo $event["date"];
 									echo "<div class=\"btn-group\">";
 									echo "<button type=\"button\" class=\"btn btn-primary dropdown-toggle share-button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
@@ -109,15 +113,19 @@ class SchnitzelUtils {
 								echo "</div>";
 								echo "<div class=\"termin-heading col-md-6 col-sm-12\">";
 									echo "<h4>" . $event["time"] . " Uhr</h4>";
-									echo "<address>";
-										echo "<strong>" . $event["location"] . "<a href=\"https://www.google.de/maps?q=".urlencode($event["location"]." ".$event["street"]." ".$event["city"])."\"><i class=\"fa fa-map-marker location-marker\" aria-hidden=\"true\"></i></a></strong><br>";
-										echo $event["street"] . "<br>";
-										echo $event["city"] . "<br>";
+									echo "<address itemprop=\"location\" itemscope itemtype=\"http://schema.org/Place\">";
+										echo "<strong> <span itemprop=\"name\">" . $event["location"] ."</span><a href=\"https://www.google.de/maps?q=".urlencode($event["location"]." ".$event["street"]." ".$event["city"])."\"><i class=\"fa fa-map-marker location-marker\" aria-hidden=\"true\"></i></a></strong><br>";
+										echo "<span itemprop=\"address\" itemscope itemtype=\"http://schema.org/PostalAddress\">";
+										echo "<span itemprop=\"streetAddress\">" . $event["street"] . "</span><br>";
+										echo "<span itemprop=\"addressLocality\">" . $event["city"] . "</span><br>";
+										echo "</span>";
 									echo "</address>";
 								echo "</div>";
 								echo "<div class=\"termin-body col-md-6 col-sm-12\">";
+									echo "<meta itemprop=\"description\" content=\"Der Schnitzelverein trifft sich wieder! Sei dabei, wenn es wieder heißt: Froh Schnitzel!\"";
 									echo $event["text"];
 								echo "</div>";
+								//TODO: Logo zu schema.org-Mikrodaten hinzufügen
 								echo "<div style=\"display: block; clear: both;\"></div>";
 							echo "</div>";
 						echo "</div>";

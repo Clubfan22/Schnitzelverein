@@ -17,7 +17,7 @@ foreach($events as $event){
 	echo "ORGANIZER:CN=\"1. Deutscher Schnitzelverein e.V.\":MAILTO:ammon.marco@t-online.de\r\n";
 	echo "LOCATION:".$event["location"]." ".$event["street"]." ".$event["city"]."\r\n";
 	echo "SUMMARY:Treffen 1. Deutscher Schnitzelverein\r\n";
-	echo "DESCRIPTION;ALTREP=\"http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine#event-".$event["id"]."\":".$event["text"]."\r\n";
+	echo "DESCRIPTION;ALTREP=\"https://schnitzelverein.de/Termine#event-".$event["id"]."\":".$event["text"]."\r\n";
 	echo "X-ALT-DESC;FMTTYPE=text/html:".$event["text"]."\r\n";
 	echo "CLASS:PUBLIC\r\n";
 	//TODO: Timestamp richtig konvertieren

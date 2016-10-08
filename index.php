@@ -42,14 +42,16 @@ if (isset($_GET["page"])) {
 }
 $title = get_value_from_page($page, $pages, "title");
 ?><!DOCTYPE html>
-<html lang="de">
+<html lang="de" prefix="og: http://ogp.me/ns#">
     <head>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans|Kaushan+Script' rel='stylesheet' type='text/css'>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="<?php echo get_value_from_page($page, $pages, "description"); ?>">
-		
+		<meta property="og:title" content="<?php echo $title. " - 1. Deutscher Schnitzelverein e.V." ?>" />
+		<meta property="og:type" content="website" />
+		<!--<meta property="og:image" content="logo.png" /> -->
         <title><?php echo $title. " - 1. Deutscher Schnitzelverein e.V." ?></title>
 		<!-- Bootstrap -->
 		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

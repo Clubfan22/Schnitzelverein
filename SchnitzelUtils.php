@@ -122,7 +122,7 @@ class SchnitzelUtils {
 									echo "</address>";
 								echo "</div>";
 								echo "<div class=\"termin-body col-md-6 col-sm-12\">";
-									echo "<meta itemprop=\"description\" content=\"Der Schnitzelverein trifft sich wieder! Sei dabei, wenn es wieder heißt: Froh Schnitzel!\"";
+									echo "<meta itemprop=\"description\" content=\"Der Schnitzelverein trifft sich wieder! Sei dabei, wenn es wieder heißt: Froh Schnitzel!\">";
 									echo $event["text"];
 								echo "</div>";
 								//TODO: Logo zu schema.org-Mikrodaten hinzufügen

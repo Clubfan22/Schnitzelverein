@@ -33,7 +33,7 @@ if (isset($_POST["store"])) {
 					echo "<p>Bearbeiten des Termins mit der ID ".$id." fehlgeschlagen!</p>";
 				} else {
 					$id = $res;
-					echo "<script type=\"text/javascript\">window.location.href = \"http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine\";</script>";
+					echo "<script type=\"text/javascript\">window.location.href = \"https://schnitzelverein.de/Termine\";</script>";
 				}
 			}
 	} else {
@@ -55,7 +55,7 @@ if (isset($_POST["store"])) {
 		if ($res == false){
 			echo "<p>Anlegen des Termins fehlgeschlagen!</p>";
 		} else {
-			echo "<script type=\"text/javascript\">window.location.href = \"http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine\";</script>";
+			echo "<script type=\"text/javascript\">window.location.href = \"https://schnitzelverein.de/Termine\";</script>";
 		}
 	}
 } else {

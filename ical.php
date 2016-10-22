@@ -5,7 +5,7 @@ header('Content-Disposition: attachment; filename=Termine_Schnitzelverein.ics');
 include "SchnitzelDB.php";
 echo "BEGIN:VCALENDAR\r\n";
 echo "VERSION:2.0\r\n";
-echo "PRODID:http://ammon.diskstation.me/Schnitzelverein/index.php?page=termine\r\n";
+echo "PRODID:https:/schnitzelverein.de/Termine\r\n";
 echo "METHOD:PUBLISH\r\n";
 
 $db = new SchnitzelDB();

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>https://schnitzelverein.de/</loc>
+  <changefreq>daily</changefreq>
+  <lastmod>2016-10-23T11:43:53+00:00</lastmod>
+</url>
+<url>
+  <loc>https://schnitzelverein.de/Termine</loc>
+  <changefreq>daily</changefreq>
+  <lastmod>2016-10-23T11:43:53+00:00</lastmod>
+</url>
+<url>
+  <loc>https://schnitzelverein.de/Mitglied</loc>
+  <changefreq>weekly</changefreq>
+  <lastmod>2016-10-23T11:43:53+00:00</lastmod>
+</url>
+<url>
+  <loc>https://schnitzelverein.de/Impressum</loc>
+  <changefreq>monthly</changefreq>
+  <lastmod>2016-10-13T11:43:53+00:00</lastmod>
+</url>
+<url>
+  <loc>https://schnitzelverein.de/index.php?page=login</loc>
+  <changefreq>monthly</changefreq>
+  <lastmod>2016-10-25T11:43:53+00:00</lastmod>
+</url>
+<url>
+  <loc>https://schnitzelverein.de/documents/beitrittserklärung_formular.pdf</loc>
+  <lastmod>2016-10-06T15:43:53+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://schnitzelverein.de/documents/satzung.pdf</loc>
+  <lastmod>2016-10-06T15:44:01+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://schnitzelverein.de/documents/datenblatt_formular.pdf</loc>
+  <lastmod>2016-10-06T15:44:05+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+</urlset>

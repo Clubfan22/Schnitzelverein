@@ -1,0 +1,12 @@
+Sitemap: https://schnitzelverein.de/sitemap.xml
+User-agent: *
+Disallow: /bootstrap/
+Disallow: /content/
+Disallow: /css/
+Disallow: /font-awesome/
+Disallow: /icomoon/
+Disallow: /less/
+Disallow: /logs/
+Disallow: /resources/
+Disallow: /sql/
+Disallow: /trumbowyg/

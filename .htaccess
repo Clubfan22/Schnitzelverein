@@ -4,6 +4,7 @@ RewriteRule ^Übersicht$ / [NC,L]
 RewriteRule ^übersicht$ / [NC,L]
 RewriteRule ^impressum$ /index.php?page=impressum [NC,L]
 RewriteRule ^mitglied$ /index.php?page=mitglied [NC,L]
+RewriteRule ^listbenutzer$ /index.php?page=listbenutzer [NC,L]
 RewriteCond %{SERVER_PORT} !=443
 RewriteRule ^(.*)$ https://schnitzelverein.de/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} !^schnitzelverein\.de$ [NC]

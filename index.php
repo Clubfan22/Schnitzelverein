@@ -51,7 +51,7 @@ $title = get_value_from_page($page, $pages, "title");
 		<meta name="description" content="<?php echo get_value_from_page($page, $pages, "description"); ?>">
 		<meta property="og:title" content="<?php echo $title. " - 1. Deutscher Schnitzelverein e.V." ?>" />
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="resources/logo_negativ_256.png" />
+		<meta property="og:image" content="resources/logo_full.png" />
         <title><?php echo $title. " - 1. Deutscher Schnitzelverein e.V." ?></title>
 		<!-- Bootstrap -->
 		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

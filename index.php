@@ -51,7 +51,7 @@ $title = get_value_from_page($page, $pages, "title");
 		<meta name="description" content="<?php echo get_value_from_page($page, $pages, "description"); ?>">
 		<meta property="og:title" content="<?php echo $title. " - 1. Deutscher Schnitzelverein e.V." ?>" />
 		<meta property="og:type" content="website" />
-		<!--<meta property="og:image" content="logo.png" /> -->
+		<meta property="og:image" content="resources/logo_negativ_256.png" />
         <title><?php echo $title. " - 1. Deutscher Schnitzelverein e.V." ?></title>
 		<!-- Bootstrap -->
 		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +59,7 @@ $title = get_value_from_page($page, $pages, "title");
 		<link href="icomoon/style.css" rel="stylesheet">
 		<link href="css/schnitzel.css" rel="stylesheet">
 
-		<!--<link rel="icon" href="resources/logo.png">-->
+		<link rel="icon" href="resources/logo_negativ_256.png">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,7 +80,7 @@ $title = get_value_from_page($page, $pages, "title");
 			<div class="visible-lg" id="banner">
 				<div id="logo">
 					<a href="index.php">
-						<img src="" alt="Logo" height="128" width="128">
+						<img src="resources/logo_negativ_256.png" alt="Logo" height="128" width="128">
 					</a>
 				</div>		
 				<div class="banner-container">
@@ -96,7 +96,7 @@ $title = get_value_from_page($page, $pages, "title");
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index.php"><img class="hidden-lg" id="navbar-logo" src="" alt="Logo">
+						<a class="navbar-brand" href="index.php"><img class="hidden-lg" id="navbar-logo" src="resources/logo_256.png" alt="Logo">
 							<span class="navbar-title">1. Deutscher Schnitzelverein e.V.</span>
 							<span class="navbar-title-short">Schnitzelverein e.V.</span>
 						</a>					

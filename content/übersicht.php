@@ -9,8 +9,8 @@
 			<span style="font-size: 36pt;">Schnitzel</span>
 		</div>
 		<h1 id="main-heading">Froh Schnitzel!</h1>
-		<p><strong>Herzlich Willkommen auf der Website des 1. Deutschen Schnitzelvereins e.V.!</strong><br>
-			Als Idee an einem Geburtstag geboren, sind wir nun ein rechtmäßig eingetragener Verein, der sich um das gemeinsame Zelebrieren, die Erhaltung und Förderung des Kulturguts Schnitzel sorgt und kümmert.
+		<h3>Herzlich Willkommen auf der Website des 1. Deutschen Schnitzelvereins e.V.!</h3>
+		<p id="overview-text">	Als Idee an einem Geburtstag geboren, sind wir nun ein rechtmäßig eingetragener Verein, der sich um das gemeinsame Zelebrieren, die Erhaltung und Förderung des Kulturguts Schnitzel sorgt und kümmert.
 			Dieses Ziel versuchen wir vor allem durch regelmäßige Treffen, aber auch organisierte Freizeitaktivitäten, zu erfüllen.
 			Gerade in einer Zeit des ständigen Voranschreitens des Vegetarismus geben wir dem Lieblingsessen der Deutschen eine Stimme!<br>
 			Besonders wichtig ist uns die Kollegialität innerhalb des Vereins, denn ein ohnehin schon wohlschmeckendes Schnitzel wird durch echte Freunde zu einem wahrlich famosen Genuss.

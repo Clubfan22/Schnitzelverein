@@ -80,6 +80,13 @@
   #main-heading {
     margin-top: 0px;
   }
+  #overview-text {
+    text-align: justify;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
 }
 @media (max-width: 1199px) {
   .übersicht-box-float {

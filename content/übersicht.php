@@ -17,8 +17,10 @@
 			Neue Mitglieder (und solche, die es noch werden möchten) sind natürlich bei jedem Treffen willkommen. Die Termine hierzu können <a href="index.php?page=termine">hier</a> eingesehen werden.<br>
 			Demnächst werden hier auch Bewertungen und Empfehlungen für Schnitzel im Nürnberger Land zu lesen sein.
 		</p>
+		<h2>Schnitzelgrüße von Instagram!</h2>
 		<?php
-			include '/extensions/InstagramFeed.php';
+			include 'InstagramFeed.php';
+			include 'Settings.php';
 			global $instagramUserId;
 			InstagramFeed::displayRecentMedia($instagramUserId, 6);
 		?>

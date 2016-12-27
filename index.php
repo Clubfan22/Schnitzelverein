@@ -11,7 +11,7 @@ if ($isLoggedIn){
 	$isAdministrator = SchnitzelUtils::isAdministrator($token);
 }
 $navigation = [
-	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg", "ending" => "html", "description" => "Du liebst Schnitzel und Geselligkeit? Wir vom 1. Deutschen Schnitzelverein e.V. auch!"],
+	["page" => "übersicht", "title" => "Übersicht", "visibility" => "lg", "ending" => "php", "description" => "Du liebst Schnitzel und Geselligkeit? Wir vom 1. Deutschen Schnitzelverein e.V. auch!"],
 	//["page" => "geschichte", "title" => "Geschichte", "icon" => "file-text-o"],
 	["page" => "termine", "title" => "Termine", "icon" => "calendar", "ending" => "php", "description" => "Du willst kein Treffen des Schnitzelvereins mehr verpassen? Hier gibt es alle bisherigen und zukünftigen Termine."],
 	["page" => "mitglied", "title" => "Mitglied werden!", "ending" => "html", "description" => "Du willst Mitglied im 1. Deutschen Schnitzelverein e.V. werden? Dann nichts wie los und hier anmelden!"]

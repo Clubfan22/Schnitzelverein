@@ -132,7 +132,7 @@ $title = get_value_from_page($page, $pages, "title");
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-divider"></li>
 							<li>
-								<a href="https://www.facebook.com/1-Deutscher-Schnitzelverein-379978035685364/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i><span class="hidden-sm social-text"> Facebook</span></a>
+								<a href="https://www.facebook.com/Schnitzelverein" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i><span class="hidden-sm social-text"> Facebook</span></a>
 							</li>
 							<li>
 								<a href="https://www.instagram.com/schnitzelverein/" target="_blank"><i class="icon-instagram-square-simple" aria-hidden="true"></i><span class="hidden-sm social-text"> Instagram</span></a>

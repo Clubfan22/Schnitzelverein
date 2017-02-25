@@ -72,6 +72,55 @@ class SchnitzelUtils {
 		setcookie("token", $token, $endDate);
 		setcookie("stay", $stay, $endDate);
 	}
+	
+	static function displayPosts(array $posts, $isAdministrator = false){
+		setlocale(LC_TIME, "de_DE.utf8");
+		echo "<div class=\"row\">";
+		foreach($posts as $post){
+			echo "<div class=\"col-lg-12\" id=\"post-".$post["id"]."\">";
+			echo "<div class=\"post\">";
+			echo "<div class=\"post-heading col-lg-12\">";
+			echo "<h3>";
+			echo $post["title"];
+			echo "<div class=\"btn-group\">";
+				echo "<button type=\"button\" class=\"btn btn-primary dropdown-toggle share-button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">";
+					echo "<i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i>";
+				echo "</button>";
+				echo "<ul class=\"dropdown-menu dropdown-menu-right\">";
+				$title = urlencode($post["title"]);
+				$url = urlencode("https://schnitzelverein.de#post-".$event["id"]);
+					echo "<li><a target=\"_blank\" href=\"http://www.facebook.com/sharer.php?s=100&p[title]=".$title."&p[url]=".$url."\">";
+					echo "<i class=\"fa fa-facebook\" aria-hidden=\"true\"></i>&nbsp;Facebook</a></li>";
+					echo "<li><a target=\"_blank\" href=\"http://twitter.com/share?text=".$title."&url=".$url."&counturl=".$url. "\">";
+					echo "<i class=\"fa fa-twitter\" aria-hidden=\"true\"></i>&nbsp;Twitter</a></li>";
+					echo "<li class=\"hidden-lg hidden-md\"><a target=\"_blank\" href=\"whatsapp://send?text=".$title.": ".$url."\">";
+					echo "<i class=\"fa fa-whatsapp\" aria-hidden=\"true\"></i>&nbsp;WhatsApp</a></li>";									
+				echo "</ul>";
+			echo "</div>";
+			if($isAdministrator){
+				echo "<button type=\"submit\" name=\"delete\" value=\"".$post["id"]."\" class=\"btn btn-primary\" id=\"removeBtn".$post["id"]."\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></button>";
+				echo "<a href=\"index.php?page=editpost&id=".$post["id"]."\" class=\"btn btn-primary\" id=\"editBtn".$post["id"]."\" role=\"button\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>";
+			}
+			echo "</h3>";			
+			echo "</div>";
+			echo "<div class=\"post-body col-lg-12\">";
+			echo $post["text"];
+			echo "</div>";
+			echo "<div class=\"post-footer col-lg-12\">";
+			echo "<span class=\"post-author\">";
+			echo $post["username"];
+			echo "</span>";
+			echo "<span class=\"post-date\">";
+			$date = new DateTime($post["release_date"]);
+			echo strftime("%e. %B %Y - %H:%M", (int)$date->format("U"));
+			echo "</span>";
+			echo "<div style=\"display: block; clear: both;\"></div>";
+			echo "</div>";
+			echo "</div>";
+			echo "</div>";
+		}
+		echo "</div>";
+	}
 	static function displayEvents(array $events, $mode = 'html', $isAdministrator = false) {
 		switch ($mode) {
 			case 'html':

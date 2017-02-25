@@ -74,11 +74,80 @@
 .instagram-overlay:hover:after, .instagram-overlay:hover:before {
     opacity:1;
 }
+
+#createBtn {
+	float: right;
+	line-height: inherit;
+	font-size: 26pt;
+	width: 57px;
+}
+
+.post {
+	margin-bottom: 20px;
+}
+.post-heading, .post-footer {
+	color: @navbar-default-color !important;
+	background-color: @navbar-default-link-active-bg;
+	border-color: @navbar-default-link-active-bg;
+}
+.post-heading > h3 {
+	padding-top: 10px !important;
+	margin-bottom: 10px;
+}
+.post-body, .post-footer {
+	padding-top: 10px !important;
+	padding-bottom: 10px;
+}
+.post, .post-body {
+	background-color: @navbar-default-link-color !important;
+	color: @navbar-default-link-active-bg !important;
+}
+.dropdown-menu {
+	background-color: @navbar-default-link-color;
+}
+.dropdown-menu > li > a {
+	color: @navbar-default-link-active-bg !important;	
+}
+.dropdown-menu > li > a:hover {
+	background-color: darken(@navbar-default-link-color, 5%);
+}
+.share-button {
+	padding: 6px !important;
+}
+.post-heading > h3 > .btn-primary {
+	width: 35px;
+	float: right;
+	font-size: 14px;
+	line-height: inherit;
+}
+.post-heading > h3 > div > .btn-primary {
+	width: 35px;
+	font-size: 14px;
+	line-height: inherit;
+}
+.post-heading > h3 > div {
+	float: right;
+}
+.post-heading > h3 {
+	margin-top: 0px;
+	line-height: inherit !important;
+}
+.post-author {
+	float:left;
+}
+.post-date {
+	float:right;
+}
 /*@media (min-width: @screen-md-min){
 	#main-content > div > p {
 		font-size: 15pt;
 	}
 }*/
+@media (min-width: 992px){
+	.post-body {
+		padding-top: 10px !important;
+	}	
+}
 @media (max-width:991px){
 	#main-heading {
 		margin-top: 0px;
@@ -89,10 +158,16 @@
 		-moz-hyphens: auto;
 		-webkit-hyphens: auto;
 		hyphens: auto;
-	}
+	}	
 }
 @media (max-width: 1199px){
 	.übersicht-box-float {
 		margin-top: 0px !important;
+	}
+	.post-heading {
+		padding-bottom: 5px;
+	}
+	.post-heading > h3 {
+		margin-bottom: 3px;
 	}
 }

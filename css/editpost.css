@@ -1,0 +1,27 @@
+/*
+*/
+/* 
+    Created on : 15.01.2017, 21:21:33
+    Author     : Marco Ammon (Clubfan)
+*/
+.form-control {
+  display: inline !important;
+}
+#storeBtn {
+  float: right;
+}
+#titleInput {
+  width: 75%;
+}
+#trumbowyg-editor {
+  font-family: 'Open Sans' !important;
+}
+.post-date-heading > h4 {
+  margin-bottom: 5px;
+}
+.post-title > h3,
+.post-body {
+  padding-top: 10px !important;
+  margin-bottom: 0px;
+}
+/*# sourceMappingURL=editpost.css.map */

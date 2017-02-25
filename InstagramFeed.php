@@ -26,11 +26,13 @@ class InstagramFeed {
 
 	static function displayMedia($mediaArray) {
 		$result = "<div class=\"row\">";
-		setlocale(LC_TIME, "de_DE.utf8");		
+		setlocale(LC_TIME, "de_DE.utf8");
+		$counter = 0;
 		foreach ($mediaArray->data as $key=>$value) {
+			$counter++;
 			$date = new DateTime(date("F j, Y", $value->caption->created_time));					
 			$date = strftime("%e. %B %Y", (int)$date->format("U"));
-			$result .= '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			$result .= '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			<div class="panel panel-default thumbnail">
 				<div class="panel-heading">
 					<h3 class="panel-title"><a href="'.$value->link .'" >'.htmlentities($date).'</a></h3>
@@ -44,7 +46,10 @@ class InstagramFeed {
 						.'</div>
 							<div class="panel-footer hidden-md hidden-lg"><a href="' . $value->link . '">' . htmlentities($value->caption->text) . '</a></div>
 						  </div>
-						  </div>';
+						  </div>';			
+			if ($counter % 2 == 0){
+				$result .= '<div class="clearfix visible-lg-block visible-md-block"></div>';
+			}			
 		}
 		$result .= "</div>";
 		echo $result;

@@ -25,7 +25,7 @@ class SchnitzelDB {
 
 	function createTables() {
 		$mysqli = $this->mysqli;
-		$tables = ["users", "events", "sessions", "possible_dates", "answers"];
+		$tables = ["users", "events", "sessions", "possible_dates", "answers", "posts"];
 		foreach ($tables as $table) {
 			$sql = file_get_contents("./sql/create_" . $table . ".sql");
 			if (!$mysqli->query($sql)) {
@@ -173,6 +173,25 @@ class SchnitzelDB {
 		return $user;
 	}
 	
+	function selectPostByID($id) {
+		$mysqli = $this->mysqli;
+		if (!($stmt = $mysqli->prepare("SELECT *, u.username AS username FROM posts p LEFT JOIN users u ON (p.author_id = u.id) WHERE p.id=?"))) {
+			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			return false;
+		}
+		if (!$stmt->bind_param("i", $id)) {
+			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		if (!$stmt->execute()) {
+			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		$res = $stmt->get_result();
+		$post = $res->fetch_assoc();
+		return $post;
+	}
+	
 	function listUsers($order="ASC"){
 		if (!($order == 'DESC' || $order == 'ASC')) {
 			return false;
@@ -180,6 +199,24 @@ class SchnitzelDB {
 		$mysqli = $this->mysqli;
 		$sql = "SELECT id, username, email, administrator FROM users ORDER BY id " . $order;
 		
+		if (!($stmt = $mysqli->prepare($sql))) {
+			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			return false;
+		}
+		if (!$stmt->execute()) {
+			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		$res = $stmt->get_result();
+		return $res->fetch_all(MYSQLI_ASSOC);
+	}
+	
+	function listPosts($order="ASC"){
+		if (!($order == 'DESC' || $order == 'ASC')) {
+			return false;
+		}
+		$mysqli = $this->mysqli;
+		$sql = "SELECT p.id, p.release_date, p.title, p.text, u.username AS username FROM posts p LEFT JOIN users u ON (p.author_id = u.id) ORDER BY p.release_date " . $order;		
 		if (!($stmt = $mysqli->prepare($sql))) {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			return false;
@@ -359,6 +396,57 @@ class SchnitzelDB {
 		}
 		$res = $stmt->get_result();
 		return $res->fetch_assoc();
+	}
+	
+	function createPost(array $post) {
+		$mysqli = $this->mysqli;
+		if (!($stmt = $mysqli->prepare("INSERT INTO posts (id, release_date, author_id, title, text) VALUES (null, ?, ?, ?, ?)"))) {
+			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			return false;
+		}
+		if (!$stmt->bind_param("siss", $post['release_date'], $post['author_id'], $post['title'], $post['text'])) {
+			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		if (!$stmt->execute()) {
+			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		return $mysqli->insert_id;
+	}
+
+	function updatePost(array $post) {
+		$mysqli = $this->mysqli;
+		if (!($stmt = $mysqli->prepare("UPDATE posts SET release_date = ?, author_id = ?, title = ?, text = ? WHERE id=?"))) {
+			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			return false;
+		}
+		if (!$stmt->bind_param("sissi", $post['release_date'], $post['author_id'], $post['title'], $post['text'], $post['id'])) {
+			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		if (!$stmt->execute()) {
+			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		return $post["id"];
+	}
+
+	function deletePost($id) {
+		$mysqli = $this->mysqli;
+		if (!($stmt = $mysqli->prepare("DELETE FROM posts WHERE id=?"))) {
+			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			return false;
+		}
+		if (!$stmt->bind_param("i", $id)) {
+			echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		if (!$stmt->execute()) {
+			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		return true;
 	}
 
 }

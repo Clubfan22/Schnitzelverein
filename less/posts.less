@@ -1,0 +1,58 @@
+@import "bootstrap/less/variables.less";
+
+.post {
+	margin-bottom: 20px;
+}
+.post-heading, .post-title  {
+	color: @navbar-default-color !important;
+	background-color: @navbar-default-link-active-bg;
+	border-color: @navbar-default-link-active-bg;
+}
+h1, h3 {
+	margin-top: 0px;
+}
+h1 {
+	padding-bottom: 5px;
+}
+.post-heading > h4 {
+	margin-bottom: 5px;
+}
+.post-title > h3, .post-body {
+	padding-top: 10px !important;
+	margin-bottom: 0px;
+}
+.post-body {
+	padding-bottom: 10px;
+}
+.post, .post-body {
+	background-color: @navbar-default-link-color !important;
+	color: @navbar-default-link-active-bg !important;
+}
+h3 > div {
+	float: right;
+}
+h1 {
+	width: 100%;
+}
+h3 {
+	line-height: inherit !important;
+}
+
+@media (min-width: 992px){
+	.post-body {
+		padding-top: 10px !important;
+	}
+	.post-title {
+		padding-bottom: 10px;
+	}
+	.post-heading {
+		background-color: @navbar-default-link-color !important;
+		color: @navbar-default-link-active-bg !important;
+	}	
+}
+@media (max-width: 767px) {
+	.post-heading > h4 {
+		padding-top: 5px;
+		margin-top: 0px;
+	}	
+}

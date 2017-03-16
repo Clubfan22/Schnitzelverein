@@ -45,6 +45,11 @@
 				$db -> connect();
 				$posts = $db -> listPosts("DESC");
 				SchnitzelUtils::displayPosts($posts, $isLoggedIn);
+				$drafts = $db -> listDrafts("DESC");
+				if ($isLoggedIn){
+					echo "<h2>Entwürfe:</h2>";
+					SchnitzelUtils::displayPosts($drafts, $isLoggedIn);
+				}
 			?>
 			</form>
 			</div>

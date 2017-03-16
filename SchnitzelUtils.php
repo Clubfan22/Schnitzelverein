@@ -77,7 +77,7 @@ class SchnitzelUtils {
 		setlocale(LC_TIME, "de_DE.utf8");
 		echo "<div class=\"row\">";
 		foreach($posts as $post){
-			echo "<div class=\"col-lg-12\" id=\"post-".$post["id"]."\">";
+			echo "<div class=\"col-lg-12 post-div\" id=\"post-".$post["id"]."\" >";
 			echo "<div class=\"post\">";
 			echo "<div class=\"post-heading col-lg-12\">";
 			echo "<h3>";

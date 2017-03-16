@@ -18,11 +18,17 @@ if (isset($_POST["store"])) {
 				$user = $db->selectUserBySessionToken(filter_input(INPUT_COOKIE, 'token', FILTER_UNSAFE_RAW));
 				$userid = $user["id"];
 				$post["id"] = $id;				
-				$event_date = new DateTime("now", new DateTimeZone("Europe/Berlin"));
-				$post["release_date"] = $event_date->format(DATE_ATOM);
+				$post_date = new DateTime("now", new DateTimeZone("Europe/Berlin"));
+				
 				$post["author_id"] = $userid;
 				$post["title"] = filter_input(INPUT_POST, "titleInput", FILTER_SANITIZE_STRING);
-				$post["text"] = filter_input(INPUT_POST, "textInput", FILTER_UNSAFE_RAW);				
+				$post["text"] = filter_input(INPUT_POST, "textInput", FILTER_UNSAFE_RAW);
+				$draft = filter_input(INPUT_POST, "draftInput", FILTER_SANITIZE_STRING);
+				if ($draft == "on"){
+					$post["release_date"] = null;
+				} else {
+					$post["release_date"] = $post_date->format(DATE_ATOM);
+				}
 				$res = $db->updatePost($post);
 				if ($res == false){
 					echo "<p>Bearbeiten des Posts mit der ID ".$id." fehlgeschlagen!</p>";
@@ -39,7 +45,12 @@ if (isset($_POST["store"])) {
 		$user = $db->selectUserBySessionToken(filter_input(INPUT_COOKIE, 'token', FILTER_UNSAFE_RAW));
 		$userid = $user["id"];
 		$post_date = new DateTime("now", new DateTimeZone("Europe/Berlin"));
-		$post["release_date"] = $post_date->format(DATE_ATOM);
+		$draft = filter_input(INPUT_POST, "draftInput", FILTER_SANITIZE_STRING);		
+		if ($draft == "on"){
+			$post["release_date"] = null;
+		} else {
+			$post["release_date"] = $post_date->format(DATE_ATOM);
+		}
 		$post["author_id"] = $userid;
 		$post["title"] = filter_input(INPUT_POST, "titleInput", FILTER_SANITIZE_STRING);
 		$post["text"] = filter_input(INPUT_POST, "textInput", FILTER_UNSAFE_RAW);				
@@ -73,7 +84,8 @@ if (isset($_POST["store"])) {
 				<div class="col-lg-12 post-title">
 					<h3><input type="text" class="form-control" id="titleInput" placeholder="Überschrift" name="titleInput"<?php if (isset($post["title"])) {
 						echo " value=\"" . $post["title"] . "\"";
-					} ?>><button type="submit" name="store" class="btn btn-primary" id="storeBtn"><i class="fa fa-floppy-o" aria-hidden="true"></i></button></h3>					
+					} ?>>
+						<input type="checkbox" id="draftInput" name="draftInput"<?php if (!isset($post["release_date"])){ echo " checked ";} ?>/> <label>Entwurf</label> <button type="submit" name="store" class="btn btn-primary" id="storeBtn"><i class="fa fa-floppy-o" aria-hidden="true"></i></button></h3>					
 				</div>				
 				<div class="post-body col-md-12 col-sm-12">
 					<textarea id="textInput" placeholder="Blogtext" name="textInput"><?php if (isset($post["text"])) {

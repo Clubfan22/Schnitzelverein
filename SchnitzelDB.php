@@ -216,7 +216,24 @@ class SchnitzelDB {
 			return false;
 		}
 		$mysqli = $this->mysqli;
-		$sql = "SELECT p.id, p.release_date, p.title, p.text, u.username AS username FROM posts p LEFT JOIN users u ON (p.author_id = u.id) ORDER BY p.release_date " . $order;		
+		$sql = "SELECT p.id, p.release_date, p.title, p.text, u.username AS username FROM posts p LEFT JOIN users u ON (p.author_id = u.id) WHERE p.release_date IS NOT NULL ORDER BY p.release_date " . $order;		
+		if (!($stmt = $mysqli->prepare($sql))) {
+			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+			return false;
+		}
+		if (!$stmt->execute()) {
+			echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			return false;
+		}
+		$res = $stmt->get_result();
+		return $res->fetch_all(MYSQLI_ASSOC);
+	}
+	function listDrafts($order="ASC"){
+		if (!($order == 'DESC' || $order == 'ASC')) {
+			return false;
+		}
+		$mysqli = $this->mysqli;
+		$sql = "SELECT p.id, p.release_date, p.title, p.text, u.username AS username FROM posts p LEFT JOIN users u ON (p.author_id = u.id) WHERE p.release_date IS NULL ORDER BY p.release_date " . $order;		
 		if (!($stmt = $mysqli->prepare($sql))) {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			return false;

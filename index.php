@@ -21,7 +21,8 @@ $other_pages = [
 	["page" => "login", "title" => "Anmelden", "ending" => "php"],
 	["page" => "logout", "title" => "Abmelden", "ending" => "php"],
 	["page" => "edittermin", "title" => "Termin bearbeiten", "ending" => "php"],
-	["page" => "editpost", "title" => "Post bearbeiten", "ending" => "php"]//,
+	["page" => "editpost", "title" => "Post bearbeiten", "ending" => "php"],
+	['page' => 'datenschutz', 'title' => 'Datenschutzerklärung', 'ending' => 'html']//,
 	//["page" => "registration", "title" => "Registrieren", "ending" => "php"],
 	//["page" => "aktivierung", "title" => "Aktivieren", "ending" => "php"]
 ];
@@ -154,13 +155,16 @@ $title = get_value_from_page($page, $pages, "title");
 		<div id="footer">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-xs-12 col-md-4 col-sm-6 footer-text">
+					<div class="col-xs-12 col-md-3 col-sm-6 footer-text">
 						<span>© 2016 - 2017 1. Deutscher Schnitzelverein e.V.</span>
 					</div>					
-					<div class="col-xs-6 col-md-4 col-sm-3 footer-text">
-						<a href="Impressum">Impressum</a>
-					</div>
-					<div class="col-xs-6 col-md-4 col-sm-3 footer-text">
+					<div class="col-xs-4 col-md-3 col-sm-6 footer-text">
+                    	<a href="Impressum">Impressum</a>
+                    </div>
+                    <div class="col-xs-4 col-md-3 col-sm-3 footer-text">
+                    	<a href="Datenschutz">Datenschutz</a>
+                    </div>
+					<div class="col-xs-4 col-md-3 col-sm-3 footer-text">
 						<?php
 						if (!$isLoggedIn){
 						echo "<a href=\"index.php?page=login\">Anmelden</a>";

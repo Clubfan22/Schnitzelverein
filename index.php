@@ -156,7 +156,7 @@ $title = get_value_from_page($page, $pages, "title");
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-xs-12 col-md-3 col-sm-6 footer-text">
-						<span>© 2016 - 2017 1. Deutscher Schnitzelverein e.V.</span>
+						<span>© 2016 - 2018 1. Deutscher Schnitzelverein e.V.</span>
 					</div>					
 					<div class="col-xs-4 col-md-3 col-sm-6 footer-text">
                     	<a href="Impressum">Impressum</a>

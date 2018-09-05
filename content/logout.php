@@ -5,9 +5,9 @@ if ($token != ''){
 	$db->connect();
 	$db->deleteSession($token);
 	unset($_COOKIE['token']);
-    setcookie('token', null, -1);
+    setcookie('token', '', -1);
 	unset($_COOKIE['stay']);
-    setcookie('stay', null, -1);
+    setcookie('stay', '', -1);
 }
 header('Location: index.php');
 ?>

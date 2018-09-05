@@ -108,23 +108,23 @@ $title = get_value_from_page($page, $pages, "title");
 							<?php foreach ($navigation as $element) { ?>
 								<li <?php
 								echo "class=\"";
-								if ($element[page] == $page) {
+								if ($element['page'] == $page) {
 									echo "active ";
 								};
-								if (isset($element[visibility])) {
-									echo "visible-" . $element[visibility];
+								if (isset($element['visibility'])) {
+									echo "visible-" . $element['visibility'];
 								};
 								echo "\"";
 								?>>
-									<a href="<?php echo ucfirst($element[page]); ?>"> <?php
-										if (isset($element[icon])) {
-											echo "<i class=\"fa fa-" . $element[icon] . " visible-sm\" aria-hidden=\"true\"></i>";
+									<a href="<?php echo ucfirst($element['page']); ?>"> <?php
+										if (isset($element['icon'])) {
+											echo "<i class=\"fa fa-" . $element['icon'] . " visible-sm\" aria-hidden=\"true\"></i>";
 										};
 										echo "<span";
-										if (isset($element[icon])) {
+										if (isset($element['icon'])) {
 											echo " class=\"hidden-sm\"";
-										} echo ">" . $element[title] . "</span>";
-										if ($element[page] == $page) {
+										} echo ">" . $element['title'] . "</span>";
+										if ($element['page'] == $page) {
 											echo "<span class=\"sr-only\">(current)</span>";
 										};
 										?></a>

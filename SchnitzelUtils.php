@@ -14,7 +14,7 @@ class SchnitzelUtils {
 		return hash_pbkdf2("sha256", $password, $salt,256000,255);
 	}
 
-	function crypto_rand_secure($min, $max) {
+	static function crypto_rand_secure($min, $max) {
 		$range = $max - $min;
 		if ($range < 1)
 			return $min; // not so random...
@@ -88,7 +88,7 @@ class SchnitzelUtils {
 				echo "</button>";
 				echo "<ul class=\"dropdown-menu dropdown-menu-right\">";
 				$title = urlencode($post["title"]);
-				$url = urlencode("https://schnitzelverein.de#post-".$event["id"]);
+				$url = urlencode("https://schnitzelverein.de#post-".$post["id"]);
 					echo "<li><a target=\"_blank\" href=\"http://www.facebook.com/sharer.php?s=100&p[title]=".$title."&p[url]=".$url."\">";
 					echo "<i class=\"fa fa-facebook\" aria-hidden=\"true\"></i>&nbsp;Facebook</a></li>";
 					echo "<li><a target=\"_blank\" href=\"http://twitter.com/share?text=".$title."&url=".$url."&counturl=".$url. "\">";

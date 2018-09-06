@@ -75,8 +75,8 @@ $title = get_value_from_page($page, $pages, "title");
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="bootstrap/dist/js/button.js"></script>
-		<!--<script src="bootstrap/dist/js/collapse.js"></script>
+		<!--<script src="bootstrap/dist/js/button.js"></script>
+		<script src="bootstrap/dist/js/collapse.js"></script>
 		<script src="bootstrap/dist/js/dropdown.js"></script> -->
 		<div id="wrap">
 			<div class="visible-lg" id="banner">
@@ -155,8 +155,8 @@ $title = get_value_from_page($page, $pages, "title");
 		<div id="footer">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-xs-12 col-md-3 col-sm-6 footer-text">
-						<span>© 2016 - 2018 1. Deutscher Schnitzelverein e.V.</span>
+					<div class="col-xs-12 col-md-4 col-sm-6 footer-text">
+						<span>© 2016 - <?php echo date('Y') ?> 1. Deutscher Schnitzelverein e.V.</span>
 					</div>					
 					<div class="col-xs-4 col-md-3 col-sm-6 footer-text">
                     	<a href="Impressum">Impressum</a>
@@ -164,7 +164,7 @@ $title = get_value_from_page($page, $pages, "title");
                     <div class="col-xs-4 col-md-3 col-sm-3 footer-text">
                     	<a href="Datenschutz">Datenschutz</a>
                     </div>
-					<div class="col-xs-4 col-md-3 col-sm-3 footer-text">
+					<div class="col-xs-4 col-md-2 col-sm-3 footer-text">
 						<?php
 						if (!$isLoggedIn){
 						echo "<a href=\"index.php?page=login\">Anmelden</a>";

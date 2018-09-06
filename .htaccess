@@ -1,11 +1,7 @@
 RewriteEngine On
-RewriteRule ^Termine$ /index.php?page=termine [NC,L]
 RewriteRule ^termine$ /index.php?page=termine [NC,L]
-RewriteRule ^Übersicht$ / [NC,L]
-RewriteRule ^übersicht$ / [NC,L]
-RewriteRule ^Impressum$ /index.php?page=impressum [NC,L]
+RewriteRule ^(Ü|ü)bersicht$ / [NC,L]
 RewriteRule ^impressum$ /index.php?page=impressum [NC,L]
-RewriteRule ^Mitglied$ /index.php?page=mitglied [NC,L]
 RewriteRule ^mitglied$ /index.php?page=mitglied [NC,L]
-RewriteRule ^Datenschutz$ /index.php?page=datenschutz [NC,L]
 RewriteRule ^datenschutz$ /index.php?page=datenschutz [NC,L]
+RewriteRule ^listbenutzer /index.php?page=listbenutzer [NC,L]
